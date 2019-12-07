@@ -22,26 +22,30 @@
         android:text="REGISTO" />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:tooltipText="Enter username"
+        android:inputType="textEmailAddress"
+        android:hinr="Enter username"
         android:background="@color/colorAccent" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
-        android:tooltipText="Enter password"
+        android:hinr="Enter password"
         android:background="@color/colorAccent" />
 
     <EditText
+        android:id="@+id/password_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
-        android:tooltipText="Confirm password"
+        android:hinr="Confirm password"
         android:background="@color/colorAccent" />
 
     <Button

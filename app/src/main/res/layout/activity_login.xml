@@ -22,18 +22,21 @@
         android:text="LOGIN" />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:tooltipText="Enter username"
+        android:inputType="textEmailAddress"
+        android:hint="Enter email"
         android:background="@color/colorAccent" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
-        android:tooltipText="Enter password"
+        android:hint="Enter password"
         android:background="@color/colorAccent" />
 
     <Button

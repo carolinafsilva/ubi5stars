@@ -11,10 +11,12 @@ public class Map extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
     }
 
+
     public void showMenu(View v) {
-        startActivity(new Intent(this, Menu.class));
+        startActivity(new Intent(Map.this, Menu.class));
     }
 
     public void search(View v) {
