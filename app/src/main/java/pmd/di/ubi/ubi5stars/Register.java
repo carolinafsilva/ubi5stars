@@ -20,7 +20,7 @@ public class Register extends Activity {
     private EditText emailET;
     private EditText passwordET;
     private EditText passwordConfirmationET;
-    private String TAG = "ubi5stars";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
