@@ -13,14 +13,14 @@
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".Menu" />
-        <activity android:name=".Map">
+        <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".Map" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8548298374319506~1937121171" />
