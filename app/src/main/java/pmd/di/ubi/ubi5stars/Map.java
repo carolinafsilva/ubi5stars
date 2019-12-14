@@ -92,6 +92,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             public boolean onMarkerClick(Marker marker) {
                 Intent intent = new Intent(Map.this,aboutMarker.class);
                 startActivity(intent);
+                System.out.println(marker.getTitle());
                 return false;
             }
         });
