@@ -19,9 +19,9 @@
         android:theme="@style/AppTheme">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_API_key"/>
 
-        <activity android:name=".ListLocation" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
+        <activity android:name=".aboutMarker" />
         <activity android:name=".Menu" />
         <activity android:name=".Welcome">
             <intent-filter>
