@@ -45,14 +45,12 @@ public class aboutMarker extends Activity {
 
     }
 
-    public void goBack(View v){ // Return to the map
-        Intent intent = new Intent(aboutMarker.this,Map.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(getBaseContext(), "ha ha tens de usar o butão lá em cima!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getBaseContext(), "ha ha tens de usar o butão lá em cima!", Toast.LENGTH_SHORT).show();
+        super.finish();
     }
 
 
