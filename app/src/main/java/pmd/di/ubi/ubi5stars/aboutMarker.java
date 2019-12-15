@@ -3,18 +3,27 @@ package pmd.di.ubi.ubi5stars;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class aboutMarker extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markerinfo);
+
+        DisplayMetrics display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+        int c = display.widthPixels;
+        int l = display.heightPixels;
+
+        getWindow().setLayout((int) (c * 0.8), (int) (l * 0.8));
 
         final RatingBar ratingRatingBar = (RatingBar) findViewById(R.id.fivestars);
         Button submitButton = (Button) findViewById(R.id.submit);
@@ -39,6 +48,11 @@ public class aboutMarker extends Activity {
     public void goBack(View v){ // Return to the map
         Intent intent = new Intent(aboutMarker.this,Map.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getBaseContext(), "ha ha tens de usar o butão lá em cima!", Toast.LENGTH_SHORT).show();
     }
 
 
