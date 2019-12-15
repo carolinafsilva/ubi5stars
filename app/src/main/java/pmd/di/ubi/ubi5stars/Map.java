@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Locale;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
     LocationManager locationManager;
@@ -47,6 +50,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap map) {
         mMap = map;
         mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setMapToolbarEnabled(true);
+        mMap.getUiSettings().setRotateGesturesEnabled(true);
+        mMap.getUiSettings().setZoomGesturesEnabled(true);
         final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         final Location myLocation;
 
@@ -96,6 +102,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 return false;
             }
         });
+
 
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 15));
 
