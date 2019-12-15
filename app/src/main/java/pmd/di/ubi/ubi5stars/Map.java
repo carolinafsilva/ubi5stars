@@ -65,10 +65,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             final Location myLocation;
 
 
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ){
-                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            } else
-                myLocation = null;
+            myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 
             // Obter posição do utilizador
