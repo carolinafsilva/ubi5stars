@@ -26,8 +26,8 @@ public class Login extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emailET = findViewById(R.id.email);
-        passwordET = findViewById(R.id.password);
+        emailET = findViewById(R.id.l_email);
+        passwordET = findViewById(R.id.l_password);
     }
 
     public void showMenu(View v) {
@@ -46,8 +46,9 @@ public class Login extends Activity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(Login.this, Map.class);
-                            startActivity(intent);
+                            Intent i = new Intent(Login.this, Map.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
                         }
                     }
                 });

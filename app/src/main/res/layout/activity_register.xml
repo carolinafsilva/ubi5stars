@@ -1,56 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Register">
 
     <Button
+        android:id="@+id/r_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Menu"
-        android:onClick="showMenu" />
+        android:onClick="showMenu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/r_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:text="REGISTO" />
+        android:layout_marginTop="32dp"
+        android:text="Registo"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/r_menu" />
 
-    <EditText
-        android:id="@+id/email"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:inputType="textEmailAddress"
-        android:hint="Enter username"
-        android:background="@color/colorAccent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:inputType="textPassword"
-        android:hint="Enter password"
-        android:background="@color/colorAccent" />
+        <EditText
+            android:id="@+id/r_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorAccent"
+            android:hint="Enter username"
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/password_confirmation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:inputType="textPassword"
-        android:hint="Confirm password"
-        android:background="@color/colorAccent" />
+        <EditText
+            android:id="@+id/r_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorAccent"
+            android:hint="Enter password"
+            android:inputType="textPassword" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registar"
-        android:onClick="register" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/r_password_confirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@color/colorAccent"
+            android:hint="Confirm password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="register"
+            android:text="Registar" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

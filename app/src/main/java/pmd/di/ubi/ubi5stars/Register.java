@@ -29,9 +29,9 @@ public class Register extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emailET = findViewById(R.id.email);
-        passwordET = findViewById(R.id.password);
-        passwordConfirmationET = findViewById(R.id.password_confirmation);
+        emailET = findViewById(R.id.r_email);
+        passwordET = findViewById(R.id.r_password);
+        passwordConfirmationET = findViewById(R.id.r_password_confirmation);
     }
 
     public void showMenu(View v) {
@@ -51,6 +51,7 @@ public class Register extends Activity {
                                 Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
 
                                 Intent i = new Intent(Register.this, Login.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();

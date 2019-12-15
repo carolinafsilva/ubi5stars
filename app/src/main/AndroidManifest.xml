@@ -23,7 +23,9 @@
         <activity android:name=".Login" />
         <activity android:name=".aboutMarker" />
         <activity android:name=".Menu" />
-        <activity android:name=".Welcome">
+        <activity
+            android:name=".Welcome"
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
