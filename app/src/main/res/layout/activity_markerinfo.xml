@@ -7,8 +7,6 @@
     tools:context=".aboutMarker">
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="7dp"
-            android:text="Descrição"
+            android:text="@string/description"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -35,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
-            android:text="Insert description here" />
+            android:text="@string/ins_description" />
 
         <RatingBar
             android:id="@+id/fivestars"
@@ -52,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Comentários"
+            android:text="@string/comments"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
@@ -68,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="7dp"
-            android:text="SUBMIT" />
+            android:text="@string/submit" />
 
 
     </LinearLayout>
