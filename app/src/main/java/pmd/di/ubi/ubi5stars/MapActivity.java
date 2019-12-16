@@ -1,17 +1,13 @@
 package pmd.di.ubi.ubi5stars;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,9 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Locale;
-
-public class Map extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     LocationManager locationManager;
     private GoogleMap mMap;
     private Location location;
@@ -102,7 +96,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    Intent intent = new Intent(Map.this,aboutMarker.class);
+                    Intent intent = new Intent(MapActivity.this, AboutMarkerActivity.class);
                     startActivity(intent);
                     System.out.println(marker.getTitle());
                     return false;
@@ -122,7 +116,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     public void showMenu(View v) {
-        startActivity(new Intent(Map.this, Menu.class));
+        startActivity(new Intent(MapActivity.this, MenuActivity.class));
     }
 
     public void search(View v) {

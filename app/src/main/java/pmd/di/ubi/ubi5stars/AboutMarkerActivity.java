@@ -1,7 +1,5 @@
 package pmd.di.ubi.ubi5stars;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -10,9 +8,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class aboutMarker extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class AboutMarkerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,6 @@ public class aboutMarker extends Activity {
 
     @Override
     public void onBackPressed() {
-        //Toast.makeText(getBaseContext(), "ha ha tens de usar o butão lá em cima!", Toast.LENGTH_SHORT).show();
         super.finish();
     }
 

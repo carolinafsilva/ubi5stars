@@ -1,11 +1,12 @@
 package pmd.di.ubi.ubi5stars;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Menu extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +19,19 @@ public class Menu extends Activity {
     }
 
     public void login(View v) {
-        startActivity(new Intent(this, Login.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     public void register(View v) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
     public void map(View v) {
-        startActivity(new Intent(this, Map.class));
+        startActivity(new Intent(this, MapActivity.class));
     }
 
     public void search(View v) {
-        Intent intent = new Intent(Menu.this,Search.class);
+        Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
         startActivity(intent);
     }
 
@@ -38,7 +39,7 @@ public class Menu extends Activity {
     }
 
     public void settings(View v) {
-        Intent intent = new Intent(Menu.this,Settings.class);
+        Intent intent = new Intent(MenuActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
 }

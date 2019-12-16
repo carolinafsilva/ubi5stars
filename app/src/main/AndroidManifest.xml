@@ -15,21 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Settings"></activity>
-        <activity android:name=".Trails" />
+        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".TrailsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_API_key" />
 
-        <activity android:name=".Register" />
-        <activity android:name=".Login" />
-        <activity android:name=".aboutMarker" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Search" />
-
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".AboutMarkerActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".SearchActivity" />
         <activity
-            android:name=".Welcome"
+            android:name=".WelcomeActivity"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Map" />
+        <activity android:name=".MapActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

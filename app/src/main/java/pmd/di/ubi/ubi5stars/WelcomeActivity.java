@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class Welcome extends Activity {
+public class WelcomeActivity extends Activity {
 
     private final int secs = 2000;
 
@@ -17,9 +17,8 @@ public class Welcome extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Welcome.this, Login.class);
+                Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
                 startActivity(i);
                 finish();
             }

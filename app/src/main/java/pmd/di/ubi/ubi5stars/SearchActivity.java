@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Search extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
+public class SearchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ArrayAdapter<String> adapter;
 
     @Override

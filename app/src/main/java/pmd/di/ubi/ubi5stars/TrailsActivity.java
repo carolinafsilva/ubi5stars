@@ -1,11 +1,11 @@
 package pmd.di.ubi.ubi5stars;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
-public class Trails extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class TrailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
