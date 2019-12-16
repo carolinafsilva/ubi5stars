@@ -49,6 +49,8 @@ public class Login extends Activity {
                             Intent i = new Intent(Login.this, Map.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
