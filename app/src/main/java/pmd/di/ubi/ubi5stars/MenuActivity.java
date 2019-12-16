@@ -31,11 +31,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void search(View v) {
-        Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
+        Intent intent = new Intent(MenuActivity.this, AddLocation.class);
         startActivity(intent);
     }
 
     public void trail(View v) {
+        Intent intent = new Intent(MenuActivity.this, ShowLocation.class);
+        startActivity(intent);
     }
 
     public void settings(View v) {
