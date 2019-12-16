@@ -18,7 +18,6 @@ public class WelcomeActivity extends Activity {
             @Override
             public void run() {
                 Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }

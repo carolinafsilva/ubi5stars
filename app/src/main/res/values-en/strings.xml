@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ubi5stars</string>
     <string name="Login">Login</string>
     <string name="comments">Comments</string>
     <string name="conf_password">Confirm password</string>
@@ -33,4 +32,7 @@
         <item>Entertainment</item>
         <item>Retail</item>
     </string-array>
+    <string name="english">English</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="language">Language :</string>
 </resources>

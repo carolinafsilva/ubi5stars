@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Login">Iniciar Sessão</string>
+    <string name="comments">Comentários</string>
+    <string name="conf_password">Confirmar palavra-chave</string>
+    <string name="description">Descrição</string>
+    <string name="email">Inserir endereço electrónico</string>
+    <string name="english">Inglês</string>
+    <string name="enter_username">Inserir nome de utilizador</string>
+    <string name="from">Partida</string>
+    <string name="garden_trail">Rota dos Jardineiros</string>
+    <string name="ins_description">Inserir descrição aqui</string>
+    <string name="language">Idioma :</string>
+    <string name="map">Mapa</string>
+    <string name="museum_trail">Rota Museu-histórica</string>
+    <string name="password">Inserir palavra-chave</string>
+    <string name="portuguese">Português</string>
+    <string name="rallytascas_trail">Rota de Vida Noturna</string>
+    <string name="register">Registar</string>
+    <string name="search">Procurar</string>
+    <string name="settings">Definições</string>
+    <string name="submit">Submeter</string>
+    <string name="suggestions">Nossas sugestões:</string>
+    <string name="to">Destinação</string>
+    <string name="trails">Percursos</string>
+    <string name="urban_art_trail">Rota de Arte Urbana</string>
+</resources>
