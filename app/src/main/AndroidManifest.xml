@@ -26,6 +26,8 @@
         <activity android:name=".Login" />
         <activity android:name=".aboutMarker" />
         <activity android:name=".Menu" />
+        <activity android:name=".Search" />
+
         <activity
             android:name=".Welcome"
             android:theme="@style/splash">

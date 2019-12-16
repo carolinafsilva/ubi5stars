@@ -73,6 +73,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             LatLng currentPosition = new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
             mMap.addMarker(new MarkerOptions().position(currentPosition).title("Eu!").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
 
+            LatLng reitoria = new LatLng(40.274850, -7.509027);
+            mMap.addMarker(new MarkerOptions().position(reitoria).title("Reitoria"));
 
             // Marcadores do Mapa
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.280294, -7.505833)).title("Igreja de Santa Maria Maior").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
@@ -95,7 +97,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.266043, -7.498634)).title("Complexo Desportivo").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.269033, -7.493721)).title("UBI FCS"));
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.278414, -7.511632)).title("UBI Faculdade Engenharia"));
-            mMap.addMarker(new MarkerOptions().position(new LatLng(40.274850, -7.509027)).title("Reitoria UBI"));
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.277500868,-7.508651688)).title("UBI Polo 1"));
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -109,7 +110,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             });
 
 
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 15));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(reitoria, 15));
         } else {
             ActivityCompat.requestPermissions(this, new String[] {
                             Manifest.permission.ACCESS_FINE_LOCATION,

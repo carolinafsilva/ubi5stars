@@ -22,4 +22,15 @@
     <string name="museum_trail">Museum Trail</string>
     <string name="rallytascas_trail">Nightlife Trail</string>
     <string name="urban_art_trail">Urban Art Trail</string>
+
+    <string-array name="classes">
+        <item>Transports</item>
+        <item>Education</item>
+        <item>Sports</item>
+        <item>Urban Art</item>
+        <item>Museums</item>
+        <item>Monuments</item>
+        <item>Entertainment</item>
+        <item>Retail</item>
+    </string-array>
 </resources>

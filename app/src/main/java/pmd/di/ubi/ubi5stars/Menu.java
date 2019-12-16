@@ -30,11 +30,15 @@ public class Menu extends Activity {
     }
 
     public void search(View v) {
+        Intent intent = new Intent(Menu.this,Search.class);
+        startActivity(intent);
     }
 
     public void trail(View v) {
     }
 
     public void settings(View v) {
+        Intent intent = new Intent(Menu.this,Settings.class);
+        startActivity(intent);
     }
 }

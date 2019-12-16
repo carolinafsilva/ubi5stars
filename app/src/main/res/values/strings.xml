@@ -21,7 +21,20 @@
     <string name="from">Partida</string>
     <string name="suggestions">Nossas sugestões:</string>
     <string name="urban_art_trail">Rota de Arte Urbana</string>
-    <string name="museum_trail">Rota Museuo-histórica</string>
+    <string name="museum_trail">Rota Museu-histórica</string>
     <string name="garden_trail">Rota dos Jardineiros</string>
     <string name="rallytascas_trail">Rota de Vida Noturna</string>
+
+
+    <string-array name="classes">
+        <item>Transportes</item>
+        <item>Educação</item>
+        <item>Desporto</item>
+        <item>Arte Urbana</item>
+        <item>Museus</item>
+        <item>Monumentos</item>
+        <item>Lazer</item>
+        <item>Espaços Comerciais</item>
+    </string-array>
+
 </resources>
