@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">ubi5stars</string>
+    <string name="app_name">ubi5stars</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-8548298374319506/2863205945</string>
     <string name="app_id" translatable="false">ca-app-pub-8548298374319506~1937121171</string>
     <string name="Login">Iniciar Sessão</string>
@@ -17,4 +17,11 @@
     <string name="settings">Definições</string>
     <string name="enter_username">Inserir nome de utilizador</string>
     <string name="conf_password">Confirmar palavra-chave</string>
+    <string name="to">Destinação</string>
+    <string name="from">Partida</string>
+    <string name="suggestions">Nossas sugestões:</string>
+    <string name="urban_art_trail">Rota de Arte Urbana</string>
+    <string name="museum_trail">Rota Museuo-histórica</string>
+    <string name="garden_trail">Rota dos Jardineiros</string>
+    <string name="rallytascas_trail">Rota de Vida Noturna</string>
 </resources>
