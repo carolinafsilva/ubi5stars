@@ -3,6 +3,7 @@ package pmd.di.ubi.ubi5stars;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +16,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void hideMenu(View v) {
-        super.finish();
+        Toast.makeText(getApplicationContext(), getString(R.string.menu_ee), Toast.LENGTH_SHORT).show();
     }
 
     public void login(View v) {
@@ -31,17 +32,15 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void search(View v) {
-        Intent intent = new Intent(MenuActivity.this, AddLocation.class);
-        startActivity(intent);
+        startActivity(new Intent(this, AddLocation.class));
     }
 
     public void trail(View v) {
-        Intent intent = new Intent(MenuActivity.this, ShowLocation.class);
-        startActivity(intent);
+        startActivity(new Intent(this, ShowLocation.class));
     }
 
     public void settings(View v) {
-        Intent intent = new Intent(MenuActivity.this, SettingsActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, SettingsActivity.class));
     }
+
 }

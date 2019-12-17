@@ -24,4 +24,6 @@
     <string name="to">Destinação</string>
     <string name="trails">Percursos</string>
     <string name="urban_art_trail">Rota de Arte Urbana</string>
+    <string name="lang_toast">É preciso sair e entrar na aplicação para haver alterações de idioma.</string>
+    <string name="menu_ee">Estás no topo!</string>
 </resources>

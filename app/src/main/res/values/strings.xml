@@ -45,6 +45,8 @@
         <item>@string/pt</item>
         <item>@string/en</item>
     </string-array>
+    <string name="lang_toast">É preciso sair e entrar na aplicação para haver alterações de idioma.</string>
+    <string name="menu_ee">Estás no topo!</string>
 
 
 </resources>

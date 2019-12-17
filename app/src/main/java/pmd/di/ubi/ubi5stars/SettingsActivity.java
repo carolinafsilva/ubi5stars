@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
@@ -39,7 +39,13 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         int spinvalue = oSP.getInt("lang", -1);
         if (spinvalue != -1)
             spin.setSelection(spinvalue);
-
+        else {
+            String sys_lang = Locale.getDefault().getLanguage();
+            if (sys_lang != null && (sys_lang.equals("en") || sys_lang.equals("pt"))) {
+                int lang_pos = adapter.getPosition(sys_lang);
+                spin.setSelection(lang_pos);
+            }
+        }
 
     }
 
@@ -50,16 +56,11 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
             initSpin = false;
         else {
             String lang = parent.getItemAtPosition(position).toString();
-            Toast.makeText(parent.getContext(), lang, Toast.LENGTH_SHORT).show();
-
             oSPE = oSP.edit();
             oSPE.putInt("lang", position);
             oSPE.apply();
-
             setLocale(lang);
-            Intent i = new Intent(this, SettingsActivity.class);
-            startActivity(i);
-            finish();
+            Toast.makeText(getApplicationContext(), getString(R.string.lang_toast), Toast.LENGTH_LONG).show();
         }
     }
 
