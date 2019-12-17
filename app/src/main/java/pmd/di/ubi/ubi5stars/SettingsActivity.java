@@ -1,5 +1,6 @@
 package pmd.di.ubi.ubi5stars;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -12,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
@@ -76,6 +79,33 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
+    }
+
+    public void deleteUserPrompt(View view) {
+        new AlertDialog.Builder(getBaseContext())
+                .setTitle(R.string.del_prompt_title)
+                .setMessage(R.string.del_prompt)
+
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (deleteUser())
+                            Toast.makeText(getBaseContext(), R.string.succ_operation, Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getBaseContext(), R.string.unsucc_operation, Toast.LENGTH_SHORT).show();
+                    }
+                })
+
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    public boolean deleteUser() {
+
+        // Como é que a informação do user chega aqui?
+        // actually delete user
+
+        return true;
     }
 
     // Idioma

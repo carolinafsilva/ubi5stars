@@ -39,4 +39,13 @@
     <string name="language">Language :</string>
     <string name="lang_toast">The aplication needs to be restarted in order for changes made to be seen</string>
     <string name="menu_ee">You are at the Top!</string>
+    <string name="trace">Trace Trail</string>
+    <string name="delete_acc">Delete Account</string>
+    <string name="del_prompt">Are you sure you want to delete all of your user data including your own account?</string>
+    <string name="del_prompt_title">Operation</string>
+    <string name="succ_operation">Operation successful</string>
+    <string name="unsucc_operation">Operation unsuccessful</string>
+    <string name="rgstr_prompt">Still haven\'t registered yourself an account? Click here!</string>
+    <string name="logout">Logout</string>
+    <string name="user">User</string>
 </resources>

@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     EditText emailET, passwordET;
+    int REQ_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,5 +55,24 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void startRegistry(View view) {
+        Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivityForResult(i, REQ_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE)
+            if (resultCode == RESULT_OK) {
+
+                // Colocar diretamente os dados do login nos editTexts
+
+                // data.getStringExtra ??
+                /*emailET =
+                passwordET =*/
+            }
     }
 }

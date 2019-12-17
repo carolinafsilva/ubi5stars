@@ -58,6 +58,16 @@
             android:onClick="login"
             android:text="@string/Login" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="startRegistry"
+            android:text="@string/rgstr_prompt" />
+
+
     </LinearLayout>
 
 

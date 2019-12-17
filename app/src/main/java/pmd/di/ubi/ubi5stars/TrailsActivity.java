@@ -18,6 +18,9 @@ public class TrailsActivity extends AppCompatActivity {
     public void getCurrCoord(View view) {
     }
 
+    public void traceTrail(View view) {
+    }
+
     public void museumTrail(View view) {
     }
 

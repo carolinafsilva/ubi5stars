@@ -27,5 +27,14 @@
     <string name="lang_toast">É preciso sair e entrar na aplicação para haver alterações de idioma.</string>
     <string name="menu_ee">Estás no topo!</string>
     <string name="add_location">Adicionar Localização</string>
+    <string name="trace">Traçar Percurso</string>
+    <string name="delete_acc">Apagar Conta</string>
+    <string name="del_prompt">Queres mesmo apagar o todos os dados do teu utilizador, incluindo também a conta?</string>
+    <string name="del_prompt_title">Operação</string>
+    <string name="succ_operation">Operação realizada com sucesso</string>
+    <string name="unsucc_operation">Operação terminada sem successo</string>
+    <string name="rgstr_prompt">Ainda não tens uma conta registada? Clica aqui!</string>
+    <string name="logout">Terminar Sessão</string>
+    <string name="user">Utilizador</string>
 
 </resources>

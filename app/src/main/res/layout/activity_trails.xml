@@ -69,19 +69,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to" />
 
+    <Button
+        android:id="@+id/t_trace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="traceTrail"
+        android:text="@string/trace"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/t_dest" />
+
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@+id/t_dest" />
+        app:layout_constraintTop_toBottomOf="@+id/t_trace" />
 
     <TextView
         android:id="@+id/t_suggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/suggestions"
         android:textSize="16dp"
         app:layout_constraintLeft_toLeftOf="parent"

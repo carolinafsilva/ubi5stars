@@ -45,4 +45,9 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(new Intent(this, SettingsActivity.class));
     }
 
+    public void logout(View view) {
+    }
+
+    public void ranking(View view) {
+    }
 }

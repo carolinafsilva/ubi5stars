@@ -6,113 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
-    <Button
-        android:id="@+id/m_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="hideMenu"
-        android:text="@string/menu"
-        app:layout_constraintBottom_toTopOf="@+id/m_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/menu_ll"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/catalinaBlue"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/m_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:onClick="login"
-        android:text="@string/Login"
-        app:layout_constraintBottom_toTopOf="@+id/m_register"
-        app:layout_constraintEnd_toEndOf="@+id/m_menu"
-        app:layout_constraintStart_toStartOf="@+id/m_menu"
-        app:layout_constraintTop_toBottomOf="@+id/m_menu" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp">
 
-    <Button
-        android:id="@+id/m_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:onClick="register"
-        android:text="@string/register"
-        app:layout_constraintBottom_toTopOf="@+id/m_map"
-        app:layout_constraintEnd_toEndOf="@+id/m_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/m_login" />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/android_person" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:maxWidth="90dp"
+            android:text="@string/user"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="logout"
+            android:text="@string/logout"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/m_map"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_btn"
         android:onClick="map"
         android:text="@string/map"
-        app:layout_constraintBottom_toTopOf="@+id/m_search"
-        app:layout_constraintEnd_toEndOf="@+id/m_register"
-        app:layout_constraintStart_toStartOf="@+id/m_login"
-        app:layout_constraintTop_toBottomOf="@+id/m_register" />
+        android:textColor="@color/goldish"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_ll" />
 
     <Button
-        android:id="@+id/m_search"
-        android:layout_width="wrap_content"
+        android:id="@+id/m_trail"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:onClick="search"
-        android:text="@string/search"
-        app:layout_constraintBottom_toTopOf="@+id/m_trail"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_btn"
+        android:onClick="trail"
+        android:text="@string/trails"
+        android:textColor="@color/goldish"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/m_map"
         app:layout_constraintTop_toBottomOf="@+id/m_map" />
 
     <Button
-        android:id="@+id/m_trail"
-        android:layout_width="wrap_content"
+        android:id="@+id/m_ranking"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:onClick="trail"
-        android:text="@string/trails"
-        app:layout_constraintBottom_toTopOf="@+id/m_settings"
-        app:layout_constraintEnd_toEndOf="@+id/m_search"
-        app:layout_constraintStart_toStartOf="@+id/m_map"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_btn"
+        android:onClick="ranking"
+        android:text="Ranking"
+        android:textColor="@color/goldish"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/m_search"
         app:layout_constraintTop_toBottomOf="@+id/m_search" />
 
     <Button
-        android:id="@+id/m_settings"
-        android:layout_width="wrap_content"
+        android:id="@+id/m_search"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/round_button"
-        android:onClick="settings"
-        android:text="@string/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/m_trail"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_btn"
+        android:textColor="@color/goldish"
+        android:textStyle="bold"
+        android:onClick="search"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="@+id/m_map"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/m_trail" />
 
+
     <Button
-        android:id="@+id/m_addLocation"
-        android:layout_width="wrap_content"
+        android:id="@+id/m_settings"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/round_button"
-        android:onClick="addLocal"
-        android:text="@string/add_location"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/m_settings"
-        app:layout_constraintTop_toBottomOf="@+id/m_trail" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_btn"
+        android:textColor="@color/goldish"
+        android:textStyle="bold"
+        android:onClick="settings"
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="@+id/m_ranking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_ranking" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/menu_ll">
+
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
             android:src="@drawable/painel" />
     </FrameLayout>
 
