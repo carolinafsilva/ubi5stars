@@ -15,10 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"
-            android:configChanges="locale|orientation">
-
-        </activity>
+        <activity android:name=".userProfile"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:configChanges="locale|orientation"></activity>
         <activity android:name=".TrailsActivity" />
 
         <meta-data
@@ -30,8 +30,7 @@
         <activity android:name=".AboutMarkerActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".AddLocation"/>
-
+        <activity android:name=".AddLocation" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/splash">
