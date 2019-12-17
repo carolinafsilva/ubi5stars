@@ -35,4 +35,6 @@
     <string name="english">English</string>
     <string name="portuguese">Portuguese</string>
     <string name="language">Language :</string>
+    <string name="lang_toast">The aplication needs to be restarted in order for changes made to be seen</string>
+    <string name="menu_ee">You are at the Top!</string>
 </resources>
