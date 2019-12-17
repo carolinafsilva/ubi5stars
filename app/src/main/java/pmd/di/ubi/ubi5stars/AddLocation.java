@@ -28,9 +28,10 @@ public class AddLocation extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private EditText mNome;
-    private EditText mDescricao;
-    private ImageView mImageView;
+    private EditText etName;
+    private EditText etDescription;
+    private ImageView imageView;
+    private EditText etImageName;
 
     private Uri mImageUri;
 
@@ -42,9 +43,10 @@ public class AddLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_location);
 
-        mNome = findViewById(R.id.nome);
-        mDescricao = findViewById(R.id.descricao);
-        mImageView = findViewById(R.id.image_view);
+        etName = findViewById(R.id.name);
+        etDescription = findViewById(R.id.description);
+        etImageName = findViewById(R.id.image_name);
+        imageView = findViewById(R.id.image_view);
 
         storageRef = FirebaseStorage.getInstance().getReference("uploads");
         databaseRef = FirebaseDatabase.getInstance().getReference("locations");
@@ -73,7 +75,7 @@ public class AddLocation extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(mImageView);
+            Picasso.with(this).load(mImageUri).into(imageView);
         }
     }
 
@@ -82,6 +84,10 @@ public class AddLocation extends AppCompatActivity {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void addLocation() {
+
     }
 
     private void uploadFile() {
@@ -97,7 +103,7 @@ public class AddLocation extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String url = uri.toString();
-                                    Location location = new Location(mNome.getText().toString(), mDescricao.getText().toString(), url);
+                                    Location location = new Location(etName.getText().toString(), etDescription.getText().toString(), url);
                                     String uploadID = databaseRef.push().getKey();
                                     databaseRef.child(uploadID).setValue(location);
                                 }
@@ -112,6 +118,10 @@ public class AddLocation extends AppCompatActivity {
                         }
                     });
         } else {
+            String url = etImageName.getText().toString();
+            Location location = new Location(etName.getText().toString(), etDescription.getText().toString(), url);
+            String uploadID = databaseRef.push().getKey();
+            databaseRef.child(uploadID).setValue(location);
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
