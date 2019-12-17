@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -71,13 +73,23 @@ public class AboutMarkerActivity extends Activity {
         String commentText = etCommentText.getText().toString();
         float rating = ratingBar.getRating();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String username = user.getDisplayName();
+        String username;
+        if (user == null) {
+            username = "anonymous";
+        } else {
+            username = user.getEmail();
+        }
         String location = tvName.getText().toString();
         Comment comment = new Comment(commentText, username, location, rating);
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
         String uploadID = databaseRef.push().getKey();
-        databaseRef.child(uploadID).setValue(comment);
+        databaseRef.child(uploadID).setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(AboutMarkerActivity.this, "Comentário Submetido com sucesso", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
