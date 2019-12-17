@@ -27,7 +27,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     LocationManager locationManager;
     private GoogleMap mMap;
-    private Location location;
     private AdView mAdView;
     int TAG_CODE_PERMISSION_LOCATION;
     @Override
@@ -96,9 +95,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    Intent intent = new Intent(MapActivity.this, AboutMarkerActivity.class);
-                    startActivity(intent);
-                    System.out.println(marker.getTitle());
+                    Intent i = new Intent(MapActivity.this, AboutMarkerActivity.class);
+                    String name = marker.getTitle();
+                    i.putExtra("locationName", name);
+                    startActivity(i);
                     return false;
                 }
             });

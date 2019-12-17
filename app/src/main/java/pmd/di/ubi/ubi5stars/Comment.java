@@ -5,16 +5,18 @@ import java.util.Date;
 
 public class Comment {
     private String text;
-    private User user;
+    private String location;
+    private String username;
     private Date date;
     private float rating;
 
     public Comment() {
     }
 
-    public Comment(String text, User user, float rating) {
+    public Comment(String text, String user, String location, float rating) {
         this.text = text;
-        this.user = user;
+        this.location = location;
+        this.username = user;
         this.date = Calendar.getInstance().getTime();
         this.rating = rating;
     }
@@ -27,13 +29,6 @@ public class Comment {
         this.text = text;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Date getDate() {
         return date;
@@ -49,5 +44,21 @@ public class Comment {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
