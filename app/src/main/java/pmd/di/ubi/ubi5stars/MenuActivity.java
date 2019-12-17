@@ -31,12 +31,14 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(new Intent(this, MapActivity.class));
     }
 
-    public void search(View v) {
-        startActivity(new Intent(this, AddLocation.class));
-    }
+    public void search(View v) { startActivity(new Intent(this, SearchActivity.class)); }
 
     public void trail(View v) {
         startActivity(new Intent(this, ShowLocation.class));
+    }
+
+    public void addLocal(View v) {
+        startActivity(new Intent(this, AddLocation.class));
     }
 
     public void settings(View v) {

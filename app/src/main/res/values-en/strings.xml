@@ -21,6 +21,8 @@
     <string name="museum_trail">Museum Trail</string>
     <string name="rallytascas_trail">Nightlife Trail</string>
     <string name="urban_art_trail">Urban Art Trail</string>
+    <string name="add_location">Add Location</string>
+
 
     <string-array name="classes">
         <item>Transports</item>

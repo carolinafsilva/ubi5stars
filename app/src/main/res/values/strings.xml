@@ -27,6 +27,8 @@
     <string name="portuguese">Português</string>
     <string name="english">Inglês</string>
     <string name="language">Idioma :</string>
+    <string name="add_location">Adicionar Localização</string>
+
     <string name="pt" translatable="false">pt</string>
     <string name="en" translatable="false">en</string>
 

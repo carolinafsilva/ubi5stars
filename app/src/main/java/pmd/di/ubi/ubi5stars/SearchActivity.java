@@ -15,6 +15,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_search);
 
         ListView listV=(ListView)findViewById(R.id.list);   // Colocar titulo na listView
