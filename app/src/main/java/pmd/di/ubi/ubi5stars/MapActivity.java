@@ -107,9 +107,29 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     pmd.di.ubi.ubi5stars.Location l = ds.getValue(pmd.di.ubi.ubi5stars.Location.class);
                     float f = 0.0f;
                     switch (l.getCategory()) {
-                        // TODO: Add Categories
-                        case "Blah":
-                            f = 330.0f;
+                        case "Monumento":
+                            f = BitmapDescriptorFactory.HUE_AZURE;
+                            break;
+                        case "Museu":
+                            f = BitmapDescriptorFactory.HUE_BLUE;
+                            break;
+                        case "Arte Urbana":
+                            f = BitmapDescriptorFactory.HUE_CYAN;
+                            break;
+                        case "Zona Lazer":
+                            f = BitmapDescriptorFactory.HUE_MAGENTA;
+                            break;
+                        case "Zona Comercial":
+                            f = BitmapDescriptorFactory.HUE_ORANGE;
+                            break;
+                        case "Zona Desportiva":
+                            f = BitmapDescriptorFactory.HUE_ROSE;
+                            break;
+                        case "Zona Estudantil":
+                            f = BitmapDescriptorFactory.HUE_VIOLET;
+                            break;
+                        case "Transporte":
+                            f = BitmapDescriptorFactory.HUE_YELLOW;
                             break;
                     }
                     if (l.getName().equals("Reitoria")) {
