@@ -25,10 +25,13 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
-    LocationManager locationManager;
+    private LocationManager locationManager;
+    private int TAG_CODE_PERMISSION_LOCATION;
     private GoogleMap mMap;
     private AdView mAdView;
-    int TAG_CODE_PERMISSION_LOCATION;
+    private String lastMarkerId = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +57,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.getUiSettings().setMapToolbarEnabled(true);
             mMap.getUiSettings().setRotateGesturesEnabled(true);
             mMap.getUiSettings().setZoomGesturesEnabled(true);
-            final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            final Location myLocation;
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-
-            myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 
             // Obter posição do utilizador
-
-            LatLng currentPosition = new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
+            LatLng currentPosition = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
             mMap.addMarker(new MarkerOptions().position(currentPosition).title("Eu!").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
 
             LatLng reitoria = new LatLng(40.274850, -7.509027);
@@ -90,27 +90,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.266043, -7.498634)).title("Complexo Desportivo").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.269033, -7.493721)).title("UBI FCS"));
             mMap.addMarker(new MarkerOptions().position(new LatLng(40.278414, -7.511632)).title("UBI Faculdade Engenharia"));
-            mMap.addMarker(new MarkerOptions().position(new LatLng(40.277500868,-7.508651688)).title("UBI Polo 1"));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(40.277500868, -7.508651688)).title("UBI Polo 1"));
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    Intent i = new Intent(MapActivity.this, AboutMarkerActivity.class);
-                    String name = marker.getTitle();
-                    i.putExtra("locationName", name);
-                    startActivity(i);
-                    return false;
+                    if (marker.getId().equals(lastMarkerId)) {
+                        Intent i = new Intent(MapActivity.this, AboutMarkerActivity.class);
+                        String name = marker.getTitle();
+                        i.putExtra("locationName", name);
+                        startActivity(i);
+                        return false;
+                    } else {
+                        lastMarkerId = marker.getId();
+                        return false;
+                    }
                 }
             });
 
-
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(reitoria, 15));
-        } else {
-            ActivityCompat.requestPermissions(this, new String[] {
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION },TAG_CODE_PERMISSION_LOCATION);
-        }
 
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION}, TAG_CODE_PERMISSION_LOCATION);
+        }
 
 
     }
