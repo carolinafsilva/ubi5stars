@@ -36,10 +36,6 @@ public class MenuActivity extends Activity {
         startActivity(new Intent(this, ShowLocation.class));
     }
 
-    public void addLocal(View v) {
-        startActivity(new Intent(this, AddLocation.class));
-    }
-
     public void settings(View v) {
         startActivity(new Intent(this, SettingsActivity.class));
     }

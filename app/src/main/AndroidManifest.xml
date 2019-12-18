@@ -30,7 +30,6 @@
         <activity android:name=".AboutMarkerActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".AddLocation" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/splash">

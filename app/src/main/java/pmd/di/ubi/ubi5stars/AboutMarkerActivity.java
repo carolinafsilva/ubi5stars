@@ -100,12 +100,6 @@ public class AboutMarkerActivity extends Activity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.finish();
-    }
-
-
     public void getLocation(String name) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
         databaseRef.orderByChild("name").equalTo(name).addValueEventListener(new ValueEventListener() {
