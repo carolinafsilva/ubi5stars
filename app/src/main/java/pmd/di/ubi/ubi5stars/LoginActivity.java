@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent i = new Intent(LoginActivity.this, MapActivity.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), R.string.failed_login, Toast.LENGTH_LONG).show();
                         }

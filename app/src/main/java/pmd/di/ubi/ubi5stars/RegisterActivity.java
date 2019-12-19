@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
             Intent i = new Intent(RegisterActivity.this, MapActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+            finish();
         }
     }
 

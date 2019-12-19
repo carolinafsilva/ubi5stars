@@ -48,6 +48,8 @@ public class MenuActivity extends Activity {
     }
 
     public void login(View v) {
+        Intent i = new Intent(this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(new Intent(this, LoginActivity.class));
     }
 
@@ -71,7 +73,9 @@ public class MenuActivity extends Activity {
 
     public void logout(View v) {
         mAuth.signOut();
-        startActivity(new Intent(this, LoginActivity.class));
+        Intent i = new Intent(this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     public void ranking(View v) {

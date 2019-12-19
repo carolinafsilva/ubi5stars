@@ -86,5 +86,6 @@
     <string name="studantry_zone">Zona Estudantil</string>
     <string name="transport">Transporte</string>
     <string name="filter">Filtrar</string>
+    <string name="guest_enter">Entrar como visitante</string>
 
 </resources>

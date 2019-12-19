@@ -259,7 +259,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void filter(View v) {
         Intent i = new Intent(this, FilterActivity.class);
-        startActivityForResult(i, FILTER_REQ_CODE);
+        startActivity(i);
     }
 
     public void search(View v) {

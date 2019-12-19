@@ -64,5 +64,6 @@
     <string name="studantry_zone">Zona Estudantil</string>
     <string name="transport">Transporte</string>
     <string name="urban_art">Arte Urbana</string>
+    <string name="guest_enter">Entrar como visitante</string>
 
 </resources>
