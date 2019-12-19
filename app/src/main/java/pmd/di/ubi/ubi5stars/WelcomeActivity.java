@@ -24,7 +24,6 @@ public class WelcomeActivity extends Activity {
                 Intent i;
                 if (user == null) {
                     i = new Intent(WelcomeActivity.this, LoginActivity.class);
-
                 } else {
                     i = new Intent(WelcomeActivity.this, MapActivity.class);
                 }
