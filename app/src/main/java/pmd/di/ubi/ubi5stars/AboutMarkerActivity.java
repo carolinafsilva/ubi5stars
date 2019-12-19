@@ -95,7 +95,12 @@ public class AboutMarkerActivity extends Activity {
                 Toast.makeText(this, R.string.rating_warning, Toast.LENGTH_SHORT).show();
             } else {
                 String username = user.getDisplayName();
-                final String imageURL = user.getPhotoUrl().toString();
+                final String imageURL;
+                if (user.getPhotoUrl() != null) {
+                    imageURL = user.getPhotoUrl().toString();
+                } else {
+                    imageURL = "";
+                }
                 String location = tvName.getText().toString();
                 CommentCollection commentCollection = new CommentCollection(commentText, username, location, imageURL, userRating);
                 DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
@@ -186,12 +191,13 @@ public class AboutMarkerActivity extends Activity {
                     TextView tvDate = ll.findViewById(R.id.date);
                     RatingBar ratingBar = ll.findViewById(R.id.rating);
                     TextView tvCommentText = ll.findViewById(R.id.comment_text);
-
-                    Picasso.with(AboutMarkerActivity.this)
-                            .load(c.getImageURL())
-                            .fit()
-                            .centerCrop()
-                            .into(ivPhoto);
+                    if (!c.getImageURL().equals("")) {
+                        Picasso.with(AboutMarkerActivity.this)
+                                .load(c.getImageURL())
+                                .fit()
+                                .centerCrop()
+                                .into(ivPhoto);
+                    }
                     tvUsername.setText(c.getUsername());
                     tvDate.setText(date);
                     ratingBar.setRating(c.getRating());
