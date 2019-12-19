@@ -35,10 +35,11 @@
         </FrameLayout>
 
         <Button
+            android:id="@+id/up_upload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="uploadFoto"
-            android:text="Upload" />
+            android:text="@string/pfp_upload" />
 
     </LinearLayout>
 

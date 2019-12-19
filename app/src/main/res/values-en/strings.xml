@@ -57,7 +57,7 @@
     <string name="successful_login">Login successful!</string>
     <string name="failed_login">Login failed! Try again later</string>
     <string name="successful_comment">Comment submited!</string>
-    <string name="empty_user">Instanced User</string>
+    <string name="empty_user">Guest User</string>
     <string name="comment_warning">Please, login to leave a comment.</string>
     <string name="rating_warning">Please, insert a rating.</string>
     <string name="network_warning">Internet is not available.</string>
@@ -81,4 +81,6 @@
     <string name="pwd_check">Both password fields must be equal.</string>
     <string name="new_password_alert">Password edited.</string>
     <string name="new_username_alert">Username edited.</string>
+    <string name="coming_soon">Functionaly coming soon™!</string>
+    <string name="pfp_upload">Upload</string>
 </resources>
