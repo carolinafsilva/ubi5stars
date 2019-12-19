@@ -159,7 +159,7 @@ public class AboutMarkerActivity extends Activity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(AboutMarkerActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
