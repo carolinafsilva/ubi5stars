@@ -83,4 +83,5 @@
     <string name="new_username_alert">Username edited.</string>
     <string name="coming_soon">Functionaly coming soon™!</string>
     <string name="pfp_upload">Upload</string>
+    <string name="updated_pfp">Profile picture updated!</string>
 </resources>

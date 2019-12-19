@@ -3,24 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".SettingsActivity">
 
     <TextView
         android:id="@+id/s_title"
         android:layout_width="match_parent"
-        android:layout_gravity="left"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:text="@string/settings"
         android:textSize="22sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/s_def1"
@@ -45,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="deleteUser"
         android:background="@drawable/menu_btn"
+        android:onClick="deleteUser"
         android:padding="5dp"
         android:text="@string/delete_acc" />
 

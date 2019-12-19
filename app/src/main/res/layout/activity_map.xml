@@ -9,53 +9,53 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/map"
-        android:textSize="20sp"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorWhite"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
+        android:text="@string/map"
+        android:textAlignment="gravity"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_menu_black_24dp"
         android:backgroundTint="@color/colorAccent"
         android:onClick="showMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:src="@drawable/ic_menu_black_24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/map_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        android:id="@+id/map_ll"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search_white_24dp"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="search" />
+            android:onClick="search"
+            android:src="@drawable/ic_search_white_24dp" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_reorder_white_24dp"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="filter" />
+            android:onClick="filter"
+            android:src="@drawable/ic_reorder_white_24dp" />
 
     </LinearLayout>
 
@@ -63,8 +63,8 @@
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:adSize="SMART_BANNER"
         android:layout_marginBottom="5dp"
+        app:adSize="SMART_BANNER"
         app:adUnitId="@string/banner_ad_unit_id"
         app:layout_constraintBottom_toTopOf="@id/map_ll"
         app:layout_constraintLeft_toLeftOf="parent"

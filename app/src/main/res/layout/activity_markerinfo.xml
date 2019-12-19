@@ -8,10 +8,10 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_close_black_24dp"
+        android:layout_alignParentEnd="true"
         android:backgroundTint="@color/colorAccent"
         android:onClick="onExitClicked"
-        android:layout_alignParentRight="true" />
+        android:src="@drawable/ic_close_black_24dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,9 +46,9 @@
 
                 <RatingBar
                     android:id="@+id/avg_rating"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_marginBottom="16dp"
                     android:isIndicator="true"
                     android:numStars="5"
@@ -78,8 +78,6 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="16dp"
                 android:numStars="5"
                 android:stepSize="0.5" />

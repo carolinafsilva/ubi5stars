@@ -115,7 +115,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Updated username", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), R.string.new_username_alert, Toast.LENGTH_LONG).show();
                                     TVuser.setText(user.getDisplayName());
                                 }
                             }
@@ -131,7 +131,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Updated password", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), R.string.new_password_alert, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -169,7 +169,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(UserProfileActivity.this, "Upload Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserProfileActivity.this, R.string.succ_operation, Toast.LENGTH_SHORT).show();
                         fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -182,7 +182,7 @@ public class UserProfileActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(getApplicationContext(), "Updated profile picture", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getApplicationContext(), R.string.updated_pfp, Toast.LENGTH_LONG).show();
                                                 }
                                             }
                                         });

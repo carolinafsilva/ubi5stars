@@ -38,28 +38,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:padding="5dp" />
 
         <EditText
             android:id="@+id/l_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:padding="5dp" />
 
         <Button
             android:id="@+id/l_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/menu_btn"
             android:onClick="login"
             android:padding="5dp"
-            android:background="@drawable/menu_btn"
             android:text="@string/Login" />
 
         <TextView

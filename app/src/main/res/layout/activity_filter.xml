@@ -3,18 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
     android:layout_margin="10dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
     tools:context=".FilterActivity">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_close_black_24dp"
+        android:layout_gravity="top|right"
         android:backgroundTint="@color/colorAccent"
         android:onClick="onExitClicked"
-        android:layout_gravity="top|right" />
+        android:src="@drawable/ic_close_black_24dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -84,8 +84,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/menu_btn"
         android:layout_gravity="center"
+        android:background="@drawable/menu_btn"
         android:onClick="onFilterClicked"
         android:text="@string/filter" />
 </LinearLayout>

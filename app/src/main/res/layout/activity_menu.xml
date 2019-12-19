@@ -44,18 +44,17 @@
                 android:layout_marginEnd="15dp"
                 android:maxWidth="90dp"
                 android:text="@string/user"
-                android:clickable="true"
                 android:textColor="@color/colorWhite" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_btn"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:layout_margin="5dp"
-                android:padding="5dp"
                 android:onClick="logout"
-                android:background="@drawable/menu_btn"
+                android:padding="5dp"
                 android:text="@string/logout"
                 android:textSize="12sp" />
 
@@ -67,8 +66,8 @@
             android:layout_height="100dp"
             android:background="@color/catalinaBlue"
             android:gravity="center"
-            android:visibility="visible"
             android:orientation="horizontal"
+            android:visibility="visible"
             app:layout_constraintTop_toTopOf="parent">
 
             <FrameLayout
@@ -90,24 +89,24 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_btn"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="login"
-                android:layout_margin="5dp"
                 android:padding="5dp"
-                android:background="@drawable/menu_btn"
                 android:text="@string/Login"
                 android:textSize="12sp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_btn"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:padding="5dp"
-                android:layout_margin="5dp"
                 android:onClick="register"
-                android:background="@drawable/menu_btn"
+                android:padding="5dp"
                 android:text="@string/register"
                 android:textSize="12sp" />
 
