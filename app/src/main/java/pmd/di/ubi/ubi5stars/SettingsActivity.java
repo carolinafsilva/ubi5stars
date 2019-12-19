@@ -110,8 +110,4 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                     });
         }
     }
-
-    // Idioma
-    // Apagar dados/cache
-    // Abrir página de créditos? Licensas, datas, agradecimentos?
 }

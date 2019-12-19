@@ -66,8 +66,6 @@ public class AboutMarkerActivity extends Activity {
 
         Intent i = getIntent();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         if (user == null) {
             ratingBar.setIsIndicator(true);
             etCommentText.setEnabled(false);

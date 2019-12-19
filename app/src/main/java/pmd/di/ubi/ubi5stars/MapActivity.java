@@ -36,8 +36,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private final int FILTER_REQ_CODE = 1;
-
     private int TAG_CODE_PERMISSION_LOCATION = 0;
     private GoogleMap mMap;
     private AdView mAdView;
