@@ -83,6 +83,6 @@ public class MenuActivity extends Activity {
     }
 
     public void toProfile(View v) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, UserProfileActivity.class));
     }
 }

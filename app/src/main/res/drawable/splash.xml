@@ -3,7 +3,7 @@
 
     <item android:drawable="@color/colorWhite"/>
     <item>
-        <inset android:drawable="@drawable/ic_gps" />
+        <inset android:drawable="@drawable/logo_small" />
     </item>
 
 </layer-list>
