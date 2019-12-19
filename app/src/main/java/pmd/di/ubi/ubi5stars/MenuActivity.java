@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MenuActivity extends Activity {
 
     FirebaseAuth mAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,19 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
 
         mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+        updateUI(user);
+    }
+
+    public void updateUI(FirebaseUser user) {
+        if (user != null) {
+            ImageView iv = findViewById(R.id.profile_picture);
+            TextView tv = findViewById(R.id.profile_name);
+
+            iv.setImageURI(user.getPhotoUrl());
+            tv.setText(user.getEmail());
+        }
     }
 
     public void login(View v) {
