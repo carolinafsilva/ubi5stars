@@ -7,7 +7,7 @@ public class CommentCollection {
     private String text;
     private String location;
     private String username;
-    private double rating;
+    private float rating;
     private Date date;
 
     public CommentCollection() {
@@ -38,7 +38,7 @@ public class CommentCollection {
         this.date = date;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 

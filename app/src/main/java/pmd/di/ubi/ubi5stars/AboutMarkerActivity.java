@@ -69,7 +69,7 @@ public class AboutMarkerActivity extends Activity {
 
     public void submitComment() {
         String commentText = etCommentText.getText().toString();
-        float rating = ratingBar.getRating();
+        final float rating = ratingBar.getRating();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         String username;
@@ -80,6 +80,28 @@ public class AboutMarkerActivity extends Activity {
         }
         String location = tvName.getText().toString();
         CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
+
+        DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
+        locationRef.orderByChild("name").equalTo(location).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
+                LocationCollection l = ds.getValue(LocationCollection.class);
+                float sum = l.getSum() + rating;
+                float total = l.getTotal() + 1;
+                float rating = sum / total;
+                DatabaseReference db = ds.getRef();
+                db.child("sum").setValue(sum);
+                db.child("total").setValue(total);
+                db.child("rating").setValue(rating);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
         String uploadID = databaseRef.push().getKey();

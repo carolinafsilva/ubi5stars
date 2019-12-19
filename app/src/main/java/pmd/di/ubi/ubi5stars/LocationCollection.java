@@ -6,9 +6,9 @@ public class LocationCollection {
     private String description;
     private double lat;
     private double lon;
-    private double sum;
-    private double total;
-    private double rating;
+    private float sum;
+    private float total;
+    private float rating;
     private String imageURL;
 
     public LocationCollection() {
@@ -20,9 +20,9 @@ public class LocationCollection {
         this.description = description;
         this.lat = lat;
         this.lon = lon;
-        this.sum = 0.0;
-        this.total = 0.0;
-        this.rating = 0.0;
+        this.sum = 0;
+        this.total = 0;
+        this.rating = 0;
         this.imageURL = imageURL;
     }
 
@@ -66,27 +66,27 @@ public class LocationCollection {
         this.lon = lon;
     }
 
-    public double getSum() {
+    public float getSum() {
         return sum;
     }
 
-    public void setSum(double sum) {
+    public void setSum(float sum) {
         this.sum = sum;
     }
 
-    public double getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
