@@ -1,6 +1,8 @@
 package pmd.di.ubi.ubi5stars;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -55,6 +57,16 @@ public class RankingActivity extends AppCompatActivity {
                     ratingBar.setRating(l.getRating());
 
                     llRanking.addView(ll, 0);
+
+                    ll.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TextView location = v.findViewById(R.id.tv_location_name);
+                            Intent i = new Intent(RankingActivity.this, AboutMarkerActivity.class);
+                            i.putExtra("locationName", location.getText().toString());
+                            startActivity(i);
+                        }
+                    });
                 }
             }
 
