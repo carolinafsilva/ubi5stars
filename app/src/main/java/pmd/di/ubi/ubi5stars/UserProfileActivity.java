@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +43,9 @@ public class UserProfileActivity extends AppCompatActivity {
     private EditText etPass;
     private EditText etConf_pass;
 
+    private Button Bedit;
+    private Button Bupload;
+
     private StorageReference storageRef;
 
     @Override
@@ -49,13 +53,22 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        Bupload = findViewById(R.id.up_upload);
+        Bedit = findViewById(R.id.up_edit);
+
+        TVuser = findViewById(R.id.up_username);
+        TVemail = findViewById(R.id.up_emailaddr);
+
+        etUser = findViewById(R.id.up_ins_email);
+        etPass = findViewById(R.id.up_ins_password);
+        etConf_pass = findViewById(R.id.up_password_confirmation);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         mImageView = findViewById(R.id.photo);
 
         if (user != null) {
-            TVuser = findViewById(R.id.up_username);
-            TVemail = findViewById(R.id.up_emailaddr);
+
 
             TVuser.setText(user.getDisplayName());
             TVemail.setText(user.getEmail());
@@ -65,6 +78,18 @@ public class UserProfileActivity extends AppCompatActivity {
                     .fit()
                     .centerCrop()
                     .into(mImageView);
+        } else {
+
+            Bupload.setEnabled(false);
+            Bedit.setEnabled(false);
+
+            TVuser.setText(R.string.empty_user);
+            TVemail.setVisibility(View.INVISIBLE);
+
+            etUser.setVisibility(View.INVISIBLE);
+            etPass.setVisibility(View.INVISIBLE);
+            etConf_pass.setVisibility(View.INVISIBLE);
+
         }
 
         storageRef = FirebaseStorage.getInstance().getReference("profile_pictures");
@@ -74,11 +99,6 @@ public class UserProfileActivity extends AppCompatActivity {
     public void editUserData(View view) {
 
         if (user != null) {
-
-
-            etUser = findViewById(R.id.up_ins_email);
-            etPass = findViewById(R.id.up_ins_password);
-            etConf_pass = findViewById(R.id.up_password_confirmation);
 
             String username = etUser.getText().toString();
 
@@ -92,7 +112,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Updated username", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), R.string.new_username_alert, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -107,7 +127,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Updated password", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), R.string.new_password_alert, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

@@ -45,22 +45,6 @@
     <string name="conf_new_pass">Confirmar nova palavra-chave</string>
     <string name="intr_new_pass">Introduzir nova palavra-chave</string>
     <string name="intr_new_username">Introduzir novo nome de utilizador</string>
-
-    <string-array name="classes">
-        <item>Transportes</item>
-        <item>Educação</item>
-        <item>Desporto</item>
-        <item>Arte Urbana</item>
-        <item>Museus</item>
-        <item>Monumentos</item>
-        <item>Lazer</item>
-        <item>Espaços Comerciais</item>
-    </string-array>
-
-    <string-array name="languages">
-        <item>@string/pt</item>
-        <item>@string/en</item>
-    </string-array>
     <string name="successful_register">Registado com sucesso!</string>
     <string name="failed_register">Registo sem sucesso, tenta mais tarde</string>
     <string name="successful_login">Iniciada a sessão!</string>
@@ -91,5 +75,24 @@
     <string name="pwd_check">Os campos das palavras-chave têm de ser iguais.</string>
     <string name="new_username_alert">Nome de utilizador editado.</string>
     <string name="new_password_alert">Palavra-chave editada.</string>
+
+    <string-array name="classes">
+        <item>Transportes</item>
+        <item>Educação</item>
+        <item>Desporto</item>
+        <item>Arte Urbana</item>
+        <item>Museus</item>
+        <item>Monumentos</item>
+        <item>Lazer</item>
+        <item>Espaços Comerciais</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>@string/pt</item>
+        <item>@string/en</item>
+    </string-array>
+    <string name="coming_soon">Funcionalidade a ser implementada no próximo update™.</string>
+    <string name="pfp_upload">Atualizar</string>
+
 
 </resources>

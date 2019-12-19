@@ -15,26 +15,26 @@ public class TrailsActivity extends AppCompatActivity {
     }
 
     public void getCurrCoord(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void traceTrail(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void museumTrail(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void urbanartTrail(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void gardenTrail(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void nightlifeTrail(View view) {
-        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 }
