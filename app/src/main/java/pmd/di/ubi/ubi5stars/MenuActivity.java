@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,11 +15,16 @@ public class MenuActivity extends Activity {
 
     FirebaseAuth mAuth;
     FirebaseUser user;
+    private LinearLayout llLogged;
+    private LinearLayout llNotLogged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        llLogged = findViewById(R.id.ll_logged);
+        llNotLogged = findViewById(R.id.ll_not_loged);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -28,11 +34,16 @@ public class MenuActivity extends Activity {
 
     public void updateUI(FirebaseUser user) {
         if (user != null) {
+            llLogged.setVisibility(View.VISIBLE);
+            llNotLogged.setVisibility(View.INVISIBLE);
             ImageView iv = findViewById(R.id.profile_picture);
             TextView tv = findViewById(R.id.profile_name);
 
             iv.setImageURI(user.getPhotoUrl());
             tv.setText(user.getEmail());
+        } else {
+            llLogged.setVisibility(View.INVISIBLE);
+            llNotLogged.setVisibility(View.VISIBLE);
         }
     }
 
