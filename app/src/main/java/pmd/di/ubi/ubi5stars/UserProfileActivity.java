@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,12 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class UserProfileActivity extends AppCompatActivity {
 
+    FirebaseUser user;
+
     private ImageView IVphoto;
+
+    private TextView TVuser;
+    private TextView TVemail;
 
     private EditText ETuser;
     private EditText ETpass;
@@ -26,6 +33,16 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            TVuser = findViewById(R.id.up_username);
+            TVemail = findViewById(R.id.up_emailaddr);
+
+            TVuser.setText(user.getDisplayName());
+            TVemail.setText(user.getEmail());
+        }
     }
 
     public void uploadFoto(View v) {
@@ -36,7 +53,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     public void editUserData(View view) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         if (user != null) {
 
@@ -56,6 +73,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Updated username", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -70,6 +88,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Updated password", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
