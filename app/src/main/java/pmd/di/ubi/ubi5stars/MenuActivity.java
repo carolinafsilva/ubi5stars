@@ -18,6 +18,7 @@ public class MenuActivity extends Activity {
 
     FirebaseAuth mAuth;
     FirebaseUser user;
+
     private LinearLayout llLogged;
     private LinearLayout llNotLogged;
     private ImageView imageView;
@@ -43,7 +44,6 @@ public class MenuActivity extends Activity {
             llNotLogged.setVisibility(View.INVISIBLE);
             imageView = findViewById(R.id.profile_picture);
             tvName = findViewById(R.id.profile_name);
-
 
             mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
                 @Override

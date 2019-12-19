@@ -25,26 +25,26 @@ import java.util.Locale;
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     FirebaseAuth mAuth;
-    FirebaseUser FBuser;
+    FirebaseUser user;
 
     private SharedPreferences oSP;
     private SharedPreferences.Editor oSPE;
     private boolean initSpin = true;
-    private Button Bdelete;
+    private Button bDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Bdelete = findViewById(R.id.s_btn2);
+        bDelete = findViewById(R.id.s_btn2);
 
         mAuth = FirebaseAuth.getInstance();
-        FBuser = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
 
-        if(FBuser == null)
-            Bdelete.setVisibility(View.INVISIBLE);
-
+        if (user == null) {
+            bDelete.setVisibility(View.INVISIBLE);
+        }
 
         oSP = getSharedPreferences("Local_Settings", 0);
 
@@ -55,10 +55,10 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         spin.setOnItemSelectedListener(this);
 
         // Aparecer a linguagem atual da aplicação
-        int spinvalue = oSP.getInt("lang", -1);
-        if (spinvalue != -1)
-            spin.setSelection(spinvalue);
-        else {
+        int spinValue = oSP.getInt("lang", -1);
+        if (spinValue != -1) {
+            spin.setSelection(spinValue);
+        } else {
             String sys_lang = Locale.getDefault().getLanguage();
             if (sys_lang.equals("en") || sys_lang.equals("pt")) {
                 int lang_pos = adapter.getPosition(sys_lang);
@@ -71,9 +71,9 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        if (initSpin)
+        if (initSpin) {
             initSpin = false;
-        else {
+        } else {
             String lang = parent.getItemAtPosition(position).toString();
             oSPE = oSP.edit();
             oSPE.putInt("lang", position);
@@ -97,9 +97,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
     public void deleteUser(View v) {
-
-        if (FBuser != null) {
-            FBuser.delete()
+        if (user != null) {
+            user.delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

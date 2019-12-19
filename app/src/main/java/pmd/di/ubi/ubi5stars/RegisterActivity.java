@@ -19,6 +19,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
     private EditText displayNameET;
     private EditText emailET;
     private EditText passwordET;
@@ -57,10 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), R.string.successful_register, Toast.LENGTH_LONG).show();
 
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(name).build();
-
                                     user.updateProfile(profileUpdates)
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
@@ -69,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             });
+
                                     Intent i = new Intent(RegisterActivity.this, MapActivity.class);
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);

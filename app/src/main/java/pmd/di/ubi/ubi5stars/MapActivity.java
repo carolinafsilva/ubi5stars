@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private int TAG_CODE_PERMISSION_LOCATION = 0;
+
     private GoogleMap mMap;
     private AdView mAdView;
 
@@ -66,7 +67,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
-
         mAdView.loadAd(adRequest);
 
         // Verify internet connection

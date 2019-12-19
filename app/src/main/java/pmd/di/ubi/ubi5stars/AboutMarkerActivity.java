@@ -82,9 +82,10 @@ public class AboutMarkerActivity extends Activity {
     }
 
     public void submitComment() {
-        String commentText = etCommentText.getText().toString();
-        final float userRating = ratingBar.getRating();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        final float userRating = ratingBar.getRating();
+        String commentText = etCommentText.getText().toString();
 
         if (user == null) {
             Toast.makeText(this, R.string.comment_warning, Toast.LENGTH_SHORT).show();
@@ -123,7 +124,6 @@ public class AboutMarkerActivity extends Activity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
 

@@ -35,7 +35,6 @@ public class RankingActivity extends AppCompatActivity {
 
     public void getTop() {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-
         databaseRef.orderByChild("rating").limitToLast(5).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
