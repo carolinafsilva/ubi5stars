@@ -9,10 +9,11 @@
     <LinearLayout
         android:id="@+id/up_ll"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
+        android:padding="5dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
@@ -36,10 +37,12 @@
 
         <Button
             android:id="@+id/up_upload"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:onClick="uploadFoto"
-            android:text="@string/pfp_upload" />
+            android:text="@string/pfp_upload"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"/>
 
     </LinearLayout>
 

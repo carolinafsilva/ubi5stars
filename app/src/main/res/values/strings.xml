@@ -37,7 +37,7 @@
     <string name="del_prompt_title">Operação</string>
     <string name="succ_operation">Operação realizada com sucesso</string>
     <string name="unsucc_operation">Operação terminada sem successo</string>
-    <string name="rgstr_prompt">Ainda não tens uma conta registada? Clica aqui!</string>
+    <string name="rgstr_prompt"><u>Ainda não tens uma conta registada? Clica aqui!</u></string>
     <string name="user">Utilizador</string>
     <string name="logout">Terminar Sessão</string>
     <string name="emailaddress" translatable="false">Email@email.com</string>
@@ -70,7 +70,7 @@
     <string name="studantry_zone">Zona Estudantil</string>
     <string name="transport">Transporte</string>
     <string name="filter">Filtrar</string>
-    <string name="guest_enter">Entrar como visitante</string>
+    <string name="guest_enter"><u>Entrar como visitante</u></string>
     <string name="invalid_user">Nome de utilizador inválido.</string>
     <string name="pwd_check">Os campos das palavras-chave têm de ser iguais.</string>
     <string name="new_username_alert">Nome de utilizador editado.</string>

@@ -8,17 +8,19 @@
     android:layout_margin="10dp"
     tools:context=".FilterActivity">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="x"
+        android:src="@drawable/ic_close_black_24dp"
+        android:backgroundTint="@color/colorAccent"
         android:onClick="onExitClicked"
         android:layout_gravity="top|right" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/category" />
+        android:text="@string/category"
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/cb_monumentos"
@@ -82,6 +84,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/menu_btn"
         android:layout_gravity="center"
         android:onClick="onFilterClicked"
         android:text="@string/filter" />

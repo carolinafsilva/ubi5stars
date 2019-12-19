@@ -45,7 +45,7 @@
     <string name="del_prompt_title">Operation</string>
     <string name="succ_operation">Operation successful</string>
     <string name="unsucc_operation">Operation unsuccessful</string>
-    <string name="rgstr_prompt">Still haven\'t registered yourself an account? Click here!</string>
+    <string name="rgstr_prompt"><u>Still haven\'t registered yourself an account? Click here!</u></string>
     <string name="logout">Logout</string>
     <string name="user">User</string>
     <string name="edit">Edit</string>
@@ -76,7 +76,7 @@
     <string name="studantry_zone">Alumnus Zone</string>
     <string name="transport">Transport</string>
     <string name="urban_art">Urban Art</string>
-    <string name="guest_enter">Enter as guest user</string>
+    <string name="guest_enter"><u>Enter as guest user</u></string>
     <string name="invalid_user">Invalid username.</string>
     <string name="pwd_check">Both password fields must be equal.</string>
     <string name="new_password_alert">Password edited.</string>
