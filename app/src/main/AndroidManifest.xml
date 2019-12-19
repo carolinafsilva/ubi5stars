@@ -34,7 +34,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".RankingActivity"></activity>
-        <activity android:name=".UserProfile" />
+        <activity android:name=".UserProfileActivity" />
         <activity
             android:name=".SettingsActivity"
             android:configChanges="locale|orientation" />
