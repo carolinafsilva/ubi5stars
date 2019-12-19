@@ -9,11 +9,12 @@
     <color name="goldish">#bf9b30</color>
     <color name="goldash">#ffcf40</color>
     <color name="bleu">#add8e6</color>
-    <color name="monumentos">#9f8593</color>
-    <color name="museus">#1947a3</color>
-    <color name="zona_lazer">#19e560</color>
+    <color name="monumentos">#0077bb</color>
+    <color name="museus">#0000ff</color>
+    <color name="arte_urbana">#00ffff</color>
+    <color name="zona_lazer">#ff00ff</color>
     <color name="zona_desportiva">#593935</color>
-    <color name="zona_comercial">#ba8f54</color>
-    <color name="zona_estudantil">#facaff</color>
-    <color name="transportes">#cafe23</color>
+    <color name="zona_comercial">#ffc0cb</color>
+    <color name="zona_estudantil">#ee82ee</color>
+    <color name="transportes">#ffff00</color>
 </resources>

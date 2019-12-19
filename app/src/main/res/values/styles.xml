@@ -16,4 +16,14 @@
 
     </style>
 
+    <style name="splash_fit" parent="AppTheme">
+
+        <item name="android:windowBackground">@drawable/splash_fit</item>
+        <item name="android:windowNoTitle">true</item>
+
+
+    </style>
+
+
+
 </resources>
