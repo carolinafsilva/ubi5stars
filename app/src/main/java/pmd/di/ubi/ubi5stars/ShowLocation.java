@@ -36,6 +36,7 @@ public class ShowLocation extends AppCompatActivity {
         tvDescription = findViewById(R.id.description);
         imageView = findViewById(R.id.image_view);
 
+
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("locations");
 
         databaseRef.addValueEventListener(new ValueEventListener() {
