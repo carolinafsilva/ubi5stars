@@ -1,8 +1,13 @@
 package pmd.di.ubi.ubi5stars;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -54,9 +61,30 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        // Initialize the Mobile Ads SDK
+        //MobileAds.initialize(this, getString(R.string.app_id));
         //mAdView = findViewById(R.id.adView);
         //AdRequest adRequest = new AdRequest.Builder().build();
         //mAdView.loadAd(adRequest);
+
+        // Verificar conexão à internet
+        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) {
+            // connected to the internet
+            switch (activeNetwork.getType()) {
+                case ConnectivityManager.TYPE_WIFI:
+                    Toast.makeText(getApplicationContext(),"Wifi Connected",Toast.LENGTH_SHORT).show();
+                    break;
+                case ConnectivityManager.TYPE_MOBILE:
+                    Toast.makeText(getApplicationContext(),"Mobile Data Connected",Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            Toast.makeText(getApplicationContext(),"Internet not available",Toast.LENGTH_SHORT).show();
+        }
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -227,6 +255,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
     }
+
 
     public void showMenu(View v) {
         Intent i = new Intent(MapActivity.this, MenuActivity.class);
