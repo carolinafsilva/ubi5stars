@@ -78,10 +78,10 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         });
             } else {
-                Toast.makeText(this, "Invalid username", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Passwords must be equal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.pwd_check, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         emailET = findViewById(R.id.l_email);
         passwordET = findViewById(R.id.l_password);
 
-        // TODO: QoL fazer um REMEMBER ME?
     }
 
     public void showMenu(View v) {

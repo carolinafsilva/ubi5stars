@@ -77,4 +77,8 @@
     <string name="transport">Transport</string>
     <string name="urban_art">Urban Art</string>
     <string name="guest_enter">Enter as guest user</string>
+    <string name="invalid_user">Invalid username.</string>
+    <string name="pwd_check">Both password fields must be equal.</string>
+    <string name="new_password_alert">Password edited.</string>
+    <string name="new_username_alert">Username edited.</string>
 </resources>
