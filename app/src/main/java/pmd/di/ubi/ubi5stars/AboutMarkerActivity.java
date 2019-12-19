@@ -80,20 +80,18 @@ public class AboutMarkerActivity extends Activity {
 
     public void submitComment() {
         String commentText = etCommentText.getText().toString();
-        final float rating = ratingBar.getRating();
+        final float userRating = ratingBar.getRating();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        String username;
         if (user == null) {
             Toast.makeText(this, R.string.comment_warning, Toast.LENGTH_SHORT).show();
         } else {
-            if (Math.round(rating) == 0) {
+            if (Math.round(userRating) == 0) {
                 Toast.makeText(this, R.string.rating_warning, Toast.LENGTH_SHORT).show();
             } else {
-                username = user.getDisplayName();
-
+                String username = user.getDisplayName();
                 String location = tvName.getText().toString();
-                CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
+                CommentCollection commentCollection = new CommentCollection(commentText, username, location, userRating);
 
                 DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
                 locationRef.orderByChild("name").equalTo(location).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -101,9 +99,14 @@ public class AboutMarkerActivity extends Activity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
                         LocationCollection l = ds.getValue(LocationCollection.class);
-                        float sum = l.getSum() + rating;
+                        float sum = l.getSum() + userRating;
                         float total = l.getTotal() + 1;
-                        float rating = sum / total;
+                        float rating;
+                        if (total > 1) {
+                            rating = sum / total;
+                        } else {
+                            rating = userRating;
+                        }
                         DatabaseReference db = ds.getRef();
                         db.child("sum").setValue(sum);
                         db.child("total").setValue(total);
