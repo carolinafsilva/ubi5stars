@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 public class MenuActivity extends Activity {
 
@@ -39,7 +40,11 @@ public class MenuActivity extends Activity {
             ImageView iv = findViewById(R.id.profile_picture);
             TextView tv = findViewById(R.id.profile_name);
 
-            iv.setImageURI(user.getPhotoUrl());
+            Picasso.with(MenuActivity.this)
+                    .load(user.getPhotoUrl())
+                    .fit()
+                    .centerCrop()
+                    .into(iv);
             tv.setText(user.getDisplayName());
         } else {
             llLogged.setVisibility(View.INVISIBLE);
