@@ -43,7 +43,7 @@ public class SearchActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
-                    if (l.getName().toLowerCase().contains(name)) {
+                    if (l.getName().toLowerCase().contains(name) || l.getCategory().toLowerCase().equals(name)) {
                         LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.search_result, null);
 
                         TextView tvLocation = ll.findViewById(R.id.location);
