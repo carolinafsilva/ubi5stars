@@ -36,5 +36,9 @@
     <string name="rgstr_prompt">Ainda não tens uma conta registada? Clica aqui!</string>
     <string name="logout">Terminar Sessão</string>
     <string name="user">Utilizador</string>
+    <string name="edit">Editar</string>
+    <string name="conf_new_pass">Confirmar nova password</string>
+    <string name="intr_new_pass">Introduzir nova palavra-chave</string>
+    <string name="intr_new_username">Introduzir novo nome de utilizador</string>
 
 </resources>

@@ -48,4 +48,8 @@
     <string name="rgstr_prompt">Still haven\'t registered yourself an account? Click here!</string>
     <string name="logout">Logout</string>
     <string name="user">User</string>
+    <string name="edit">Edit</string>
+    <string name="conf_new_pass">Confirm new password</string>
+    <string name="intr_new_pass">Insert new password</string>
+    <string name="intr_new_username">Insert new username</string>
 </resources>

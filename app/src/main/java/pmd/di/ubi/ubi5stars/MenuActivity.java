@@ -14,10 +14,6 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
     }
 
-    public void hideMenu(View v) {
-        Toast.makeText(getApplicationContext(), getString(R.string.menu_ee), Toast.LENGTH_SHORT).show();
-    }
-
     public void login(View v) {
         startActivity(new Intent(this, LoginActivity.class));
     }
@@ -44,5 +40,9 @@ public class MenuActivity extends Activity {
     }
 
     public void ranking(View view) {
+    }
+
+    public void toProfile(View view) {
+        startActivity(new Intent(this, userProfile.class));
     }
 }

@@ -41,6 +41,11 @@
     <string name="rgstr_prompt">Ainda não tens uma conta registada? Clica aqui!</string>
     <string name="user">Utilizador</string>
     <string name="logout">Terminar Sessão</string>
+    <string name="emailaddress" translatable="false">Email@email.com</string>
+    <string name="edit">Editar</string>
+    <string name="conf_new_pass">Confirmar nova palavra-chave</string>
+    <string name="intr_new_pass">Introduzir nova palavra-chave</string>
+    <string name="intr_new_username">Introduzir novo nome de utilizador</string>
 
     <string-array name="classes">
         <item>Transportes</item>
