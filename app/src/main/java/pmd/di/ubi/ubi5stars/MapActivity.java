@@ -143,6 +143,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(new Intent(MapActivity.this, MenuActivity.class));
     }
 
+    public void filter(View v) {
+        // TODO: implement
+    }
+
     public void search(View v) {
         // TODO: implement
     }
