@@ -36,7 +36,6 @@ public class MenuActivity extends Activity {
     }
 
     public void logout(View v) {
-
         // TODO: Actually logout e ir de volta para a LoginActivity.class
         startActivity(new Intent(this, LoginActivity.class));
 

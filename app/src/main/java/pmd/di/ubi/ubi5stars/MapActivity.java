@@ -5,9 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
-import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -17,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -67,33 +63,92 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //AdRequest adRequest = new AdRequest.Builder().build();
         //mAdView.loadAd(adRequest);
 
-        // Verificar conexão à internet
+        // Verify internet connection
         ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork != null) {
-            // connected to the internet
-            switch (activeNetwork.getType()) {
-                case ConnectivityManager.TYPE_WIFI:
-                    Toast.makeText(getApplicationContext(),"Wifi Connected",Toast.LENGTH_SHORT).show();
-                    break;
-                case ConnectivityManager.TYPE_MOBILE:
-                    Toast.makeText(getApplicationContext(),"Mobile Data Connected",Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    break;
-            }
-        } else {
+        if (activeNetwork == null) {
             Toast.makeText(getApplicationContext(),"Internet not available",Toast.LENGTH_SHORT).show();
         }
 
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED) {
+
+            mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mMap.getUiSettings().setMapToolbarEnabled(true);
+            mMap.getUiSettings().setRotateGesturesEnabled(true);
+            mMap.getUiSettings().setZoomGesturesEnabled(true);
+
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    if (marker.getId().equals(lastMarkerId)) {
+                        Intent i = new Intent(MapActivity.this, AboutMarkerActivity.class);
+                        String name = marker.getTitle();
+                        i.putExtra("locationName", name);
+                        startActivity(i);
+                    } else {
+                        lastMarkerId = marker.getId();
+                    }
+                    return false;
+                }
+            });
+
+            // set bounds
+            setBounds();
+
+            // place markers
+            placeMarkers();
+
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION}, TAG_CODE_PERMISSION_LOCATION);
+        }
+    }
+
+    private void setBounds() {
+        //get latlong for corners for specified place
+        LatLng one = new LatLng(40.423003, -7.871293);
+        LatLng two = new LatLng(40.115775, -7.143812);
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
+        //add them to builder
+        builder.include(one);
+        builder.include(two);
+
+        LatLngBounds bounds = builder.build();
+
+        //get width and height to current display screen
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+
+        // 20% padding
+        int padding = (int) (width * 0.20);
+
+        //set latlong bounds
+        mMap.setLatLngBoundsForCameraTarget(bounds);
+
+        //move camera to fill the bound to screen
+        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
+
+        //set zoom to level to current so that you won't be able to zoom out viz. move outside bounds
+        mMap.setMinZoomPreference(mMap.getCameraPosition().zoom);
+    }
+
+    private void placeMarkers() {
+        mMap.clear();
 
         Intent i = getIntent();
 
@@ -106,75 +161,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         zonaEstudantil = i.getBooleanExtra("zonaEstudantil", true);
         transportes = i.getBooleanExtra("transportes", true);
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                        PackageManager.PERMISSION_GRANTED) {
-
-
-            //get latlong for corners for specified place
-            LatLng one = new LatLng(40.423003, -7.871293);
-            LatLng two = new LatLng(40.115775, -7.143812);
-
-            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-
-            //add them to builder
-            builder.include(one);
-            builder.include(two);
-
-            LatLngBounds bounds = builder.build();
-
-            //get width and height to current display screen
-            int width = getResources().getDisplayMetrics().widthPixels;
-            int height = getResources().getDisplayMetrics().heightPixels;
-
-            // 20% padding
-            int padding = (int) (width * 0.20);
-
-            //set latlong bounds
-            mMap.setLatLngBoundsForCameraTarget(bounds);
-
-            //move camera to fill the bound to screen
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
-
-            //set zoom to level to current so that you won't be able to zoom out viz. move outside bounds
-            mMap.setMinZoomPreference(mMap.getCameraPosition().zoom);
-
-
-            mMap.setMyLocationEnabled(true);
-            mMap.getUiSettings().setMyLocationButtonEnabled(true);
-            mMap.getUiSettings().setMapToolbarEnabled(true);
-            mMap.getUiSettings().setRotateGesturesEnabled(true);
-            mMap.getUiSettings().setZoomGesturesEnabled(true);
-
-            // place markers
-            placeMarkers(mMap);
-
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    if (marker.getId().equals(lastMarkerId)) {
-                        Intent i = new Intent(MapActivity.this, AboutMarkerActivity.class);
-                        String name = marker.getTitle();
-                        i.putExtra("locationName", name);
-                        startActivity(i);
-                        return false;
-                    } else {
-                        lastMarkerId = marker.getId();
-                        return false;
-                    }
-                }
-            });
-
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION}, TAG_CODE_PERMISSION_LOCATION);
-        }
-    }
-
-    private void placeMarkers(final GoogleMap mMap) {
-        mMap.clear();
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
