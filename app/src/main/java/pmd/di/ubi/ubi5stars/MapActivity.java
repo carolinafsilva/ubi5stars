@@ -68,7 +68,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.getUiSettings().setZoomGesturesEnabled(true);
 
             // place markers
-            placeMarkers(mMap);
+            //placeMarkers(mMap);
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
@@ -100,6 +100,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
+
                     float f = 0.0f;
                     switch (l.getCategory()) {
                         case "Monumento":
@@ -127,6 +128,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             f = BitmapDescriptorFactory.HUE_YELLOW;
                             break;
                     }
+
                     if (l.getName().equals("Reitoria")) {
                         mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLat(), l.getLon()), 15));
@@ -149,21 +151,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void filter(View v) {
         Intent i = new Intent(this, FilterActivity.class);
-
         startActivityForResult(i, FILTER_REQ_CODE);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable final Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILTER_REQ_CODE && resultCode == RESULT_OK) {
+
+            final boolean monument = data.getBooleanExtra("monumentos", false);
+            final boolean museus = data.getBooleanExtra("museus", false);
+            final boolean arteUrbana = data.getBooleanExtra("arteUrbana", false);
+            final boolean zonaLazer = data.getBooleanExtra("zonaLazer", false);
+            final boolean zonaComercial = data.getBooleanExtra("zonaComercial", false);
+            final boolean zonaDesportiva = data.getBooleanExtra("zonaDesportiva", false);
+            final boolean zonaEstudantil = data.getBooleanExtra("zonaEstudantil", false);
+            final boolean transportes = data.getBooleanExtra("transportes", false);
+
             DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
             databaseRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    // TODO: BUG: mMap doesnt work in here
+
                     mMap.clear();
+
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         LocationCollection l = ds.getValue(LocationCollection.class);
+
                         float f = 0.0f;
                         switch (l.getCategory()) {
                             case "Monumento":
@@ -191,15 +207,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 f = BitmapDescriptorFactory.HUE_YELLOW;
                                 break;
                         }
-
-                        boolean monument = data.getBooleanExtra("monumentos", false);
-                        boolean museus = data.getBooleanExtra("museus", false);
-                        boolean arteUrbana = data.getBooleanExtra("arteUrbana", false);
-                        boolean zonaLazer = data.getBooleanExtra("zonaLazer", false);
-                        boolean zonaComercial = data.getBooleanExtra("zonaComercial", false);
-                        boolean zonaDesportiva = data.getBooleanExtra("zonaDesportiva", false);
-                        boolean zonaEstudantil = data.getBooleanExtra("zonaEstudantil", false);
-                        boolean transportes = data.getBooleanExtra("transportes", false);
 
                         if (monument && l.getCategory().equals("Monumento")) {
                             mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
