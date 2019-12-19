@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="5dp"
+    android:orientation="vertical"
     tools:context=".RankingActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="5 locais imperdíveis na Covilhã"
-        android:textSize="20sp"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/top_locations"

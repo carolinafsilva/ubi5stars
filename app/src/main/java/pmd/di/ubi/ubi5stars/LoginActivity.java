@@ -29,6 +29,9 @@ public class LoginActivity extends Activity {
 
         emailET = findViewById(R.id.l_email);
         passwordET = findViewById(R.id.l_password);
+
+        // TODO: QoL fazer um REMEMBER ME?
+
     }
 
     public void showMenu(View v) {
@@ -45,13 +48,13 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "LoginActivity successful!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.successful_login, Toast.LENGTH_LONG).show();
 
                             Intent i = new Intent(LoginActivity.this, MapActivity.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                         } else {
-                            Toast.makeText(getApplicationContext(), "LoginActivity failed!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.failed_login, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -68,11 +71,13 @@ public class LoginActivity extends Activity {
         if (requestCode == REQ_CODE)
             if (resultCode == RESULT_OK) {
 
-                // Colocar diretamente os dados do login nos editTexts
+                String email = data.getStringExtra("email");
+                String password = data.getStringExtra("password");
 
-                // data.getStringExtra ??
-                /*emailET =
-                passwordET =*/
+                // Colocar os campos que ele pos no registar no login?
+                emailET.setText(email);
+                passwordET.setText(password);
+
             }
     }
 }

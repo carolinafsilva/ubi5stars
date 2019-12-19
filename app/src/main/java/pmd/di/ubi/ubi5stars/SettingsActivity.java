@@ -44,7 +44,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
             spin.setSelection(spinvalue);
         else {
             String sys_lang = Locale.getDefault().getLanguage();
-            if (sys_lang != null && (sys_lang.equals("en") || sys_lang.equals("pt"))) {
+            if (sys_lang.equals("en") || sys_lang.equals("pt")) {
                 int lang_pos = adapter.getPosition(sys_lang);
                 spin.setSelection(lang_pos);
             }
@@ -101,6 +101,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
     public boolean deleteUser() {
+
+        // TODO: IMPLEMENT
 
         // Como é que a informação do user chega aqui?
         // actually delete user

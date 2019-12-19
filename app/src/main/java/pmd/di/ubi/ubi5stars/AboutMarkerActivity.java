@@ -86,7 +86,7 @@ public class AboutMarkerActivity extends Activity {
         databaseRef.child(uploadID).setValue(commentCollection).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(AboutMarkerActivity.this, "Comentário Submetido com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AboutMarkerActivity.this, R.string.successful_comment, Toast.LENGTH_SHORT).show();
             }
         });
     }

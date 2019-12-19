@@ -25,16 +25,16 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dd/mm/aaa"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:text="dd/mm/aaa" />
     </LinearLayout>
 
     <RatingBar
         android:id="@+id/rating"
+        style="@android:style/Widget.Material.Light.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:isIndicator="true"
-        style="@android:style/Widget.Material.Light.RatingBar.Small"
         android:numStars="5" />
 
     <TextView

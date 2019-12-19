@@ -52,4 +52,9 @@
     <string name="conf_new_pass">Confirm new password</string>
     <string name="intr_new_pass">Insert new password</string>
     <string name="intr_new_username">Insert new username</string>
+    <string name="successful_register">Registration successful!</string>
+    <string name="failed_register">Registration failed! Try again later</string>
+    <string name="successful_login">Login successful!</string>
+    <string name="failed_login">Login failed! Try again later</string>
+    <string name="successful_comment">Comment submited!</string>
 </resources>

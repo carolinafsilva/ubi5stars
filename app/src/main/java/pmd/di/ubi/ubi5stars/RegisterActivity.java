@@ -39,7 +39,7 @@ public class RegisterActivity extends Activity {
     }
 
     public void register(View v) {
-        String email, password;
+        final String email, password;
         email = emailET.getText().toString();
         password = passwordET.getText().toString();
         if (password.equals(passwordConfirmationET.getText().toString())) {
@@ -48,13 +48,21 @@ public class RegisterActivity extends Activity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.successful_register, Toast.LENGTH_LONG).show();
 
                                 Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+
+                                //TODO: Isto pode fluir assim? Vejam no Login o onActivityResult
+
+                                i.putExtra("email", email);
+                                i.putExtra("password", password);
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(i);
+                                setResult(RESULT_OK, i);
+
+                                finish();
+
                             } else {
-                                Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.failed_register, Toast.LENGTH_LONG).show();
                             }
                         }
                     });

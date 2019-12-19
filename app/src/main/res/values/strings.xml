@@ -62,5 +62,10 @@
         <item>@string/pt</item>
         <item>@string/en</item>
     </string-array>
+    <string name="successful_register">Registado com sucesso!</string>
+    <string name="failed_register">Registo sem sucesso, tenta mais tarde</string>
+    <string name="successful_login">Iniciada a sessão!</string>
+    <string name="failed_login">Sessão não iniciada, tenta mais tarde</string>
+    <string name="successful_comment">Comentário submetido com sucesso!</string>
 
 </resources>

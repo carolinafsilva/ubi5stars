@@ -26,8 +26,8 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:onClick="editUserImage"
                 android:adjustViewBounds="true"
+                android:onClick="editUserImage"
                 android:scaleType="centerInside"
                 android:src="@drawable/profile" />
 
