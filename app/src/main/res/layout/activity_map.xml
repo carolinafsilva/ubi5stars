@@ -42,11 +42,14 @@
         android:id="@+id/map_ll"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <EditText
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:background="@color/colorWhite" />
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_weight="1"
+            android:text="filter"
+            android:onClick="filter" />
 
         <Button
             android:layout_width="0dp"
