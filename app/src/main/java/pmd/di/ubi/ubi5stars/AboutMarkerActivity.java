@@ -87,7 +87,7 @@ public class AboutMarkerActivity extends Activity {
         if (user == null) {
             Toast.makeText(this, "Log in to comment", Toast.LENGTH_SHORT).show();
         } else {
-            username = user.getEmail();
+            username = user.getDisplayName();
 
             String location = tvName.getText().toString();
             CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
