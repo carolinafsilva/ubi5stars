@@ -37,6 +37,7 @@ public class RankingActivity extends AppCompatActivity {
         databaseRef.orderByChild("rating").limitToLast(5).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                llRanking.removeAllViews();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
                     LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.ranking_line, null);

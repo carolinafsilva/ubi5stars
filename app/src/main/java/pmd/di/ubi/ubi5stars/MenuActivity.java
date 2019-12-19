@@ -35,18 +35,18 @@ public class MenuActivity extends Activity {
         startActivity(new Intent(this, SettingsActivity.class));
     }
 
-    public void logout(View view) {
+    public void logout(View v) {
 
         // TODO: Actually logout e ir de volta para a LoginActivity.class
         startActivity(new Intent(this, LoginActivity.class));
 
     }
 
-    public void ranking(View view) {
+    public void ranking(View v) {
         startActivity(new Intent(this, RankingActivity.class));
     }
 
-    public void toProfile(View view) {
+    public void toProfile(View v) {
         startActivity(new Intent(this, UserProfile.class));
     }
 }

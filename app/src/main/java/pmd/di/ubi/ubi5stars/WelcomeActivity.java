@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class WelcomeActivity extends Activity {
 
     private final int secs = 2000;
@@ -17,7 +20,14 @@ public class WelcomeActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Intent i;
+                if (user == null) {
+                    i = new Intent(WelcomeActivity.this, LoginActivity.class);
+
+                } else {
+                    i = new Intent(WelcomeActivity.this, MapActivity.class);
+                }
                 startActivity(i);
                 finish();
             }
