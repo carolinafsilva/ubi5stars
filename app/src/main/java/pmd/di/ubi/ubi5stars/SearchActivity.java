@@ -70,9 +70,9 @@ public class SearchActivity extends Activity {
     }
 
     public void openMap(View v) {
-        Intent i = new Intent(this, MapActivity.class);
+        Intent i = new Intent(this, AboutMarkerActivity.class);
         TextView location = searchResult.findViewById(R.id.location);
-        i.putExtra("location", location.getText().toString());
+        i.putExtra("locationName", location.getText().toString());
         startActivity(i);
     }
 }
