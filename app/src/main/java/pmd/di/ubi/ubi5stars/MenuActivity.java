@@ -40,6 +40,7 @@ public class MenuActivity extends Activity {
     }
 
     public void ranking(View view) {
+        startActivity(new Intent(this, RankingActivity.class));
     }
 
     public void toProfile(View view) {
