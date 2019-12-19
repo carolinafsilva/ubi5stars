@@ -68,7 +68,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.getUiSettings().setZoomGesturesEnabled(true);
 
             // place markers
-            //placeMarkers(mMap);
+            placeMarkers(mMap);
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
