@@ -3,7 +3,6 @@ package pmd.di.ubi.ubi5stars;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,19 +47,6 @@ public class AboutMarkerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markerinfo);
 
-        Intent i = getIntent();
-
-        String name = i.getStringExtra("locationName");
-
-        getLocation(name);
-
-        DisplayMetrics display = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(display);
-        int c = display.widthPixels;
-        int l = display.heightPixels;
-
-        //getWindow().setLayout((int) (c * 0.8), (int) (l * 0.8));
-
         etCommentText = findViewById(R.id.comment_text);
         tvName = findViewById(R.id.name);
         tvDescription = findViewById(R.id.description);
@@ -69,6 +55,11 @@ public class AboutMarkerActivity extends Activity {
         bSubmit = findViewById(R.id.submit_btn);
         comment_section = findViewById(R.id.comment_section);
 
+        Intent i = getIntent();
+
+        String name = i.getStringExtra("locationName");
+
+        getLocation(name);
         getComments(name);
     }
 
@@ -159,7 +150,7 @@ public class AboutMarkerActivity extends Activity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(AboutMarkerActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

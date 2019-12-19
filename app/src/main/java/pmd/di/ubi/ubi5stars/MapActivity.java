@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +39,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private AdView mAdView;
     private TextView searchBar;
     private String lastMarkerId = "";
-    private static final String[] categories = {"Monumento", "Museu", "Arte Urbana", "Zona Lazer", "Zona Comercial", "Zona Desportiva", "Zona Estudantil", "Transporte"};
 
     private static String locationsCollection = "locations";
 
@@ -53,8 +53,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     @Override
@@ -142,7 +140,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(MapActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -166,6 +164,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void search(View v) {
-
+        // TODO: implement
     }
 }
