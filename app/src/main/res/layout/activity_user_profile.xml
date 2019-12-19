@@ -20,7 +20,6 @@
             android:id="@+id/imgUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimaryDark">
 
@@ -29,7 +28,6 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:adjustViewBounds="true"
-                android:onClick="editUserImage"
                 android:scaleType="centerInside"
                 android:src="@drawable/profile" />
 
