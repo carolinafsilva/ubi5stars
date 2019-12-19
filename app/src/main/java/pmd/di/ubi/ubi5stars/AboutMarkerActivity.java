@@ -113,6 +113,7 @@ public class AboutMarkerActivity extends Activity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 etCommentText.setText("");
+                ratingBar.setRating(0);
                 Toast.makeText(AboutMarkerActivity.this, R.string.successful_comment, Toast.LENGTH_SHORT).show();
             }
         });
