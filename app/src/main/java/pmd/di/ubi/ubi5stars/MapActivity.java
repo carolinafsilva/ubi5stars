@@ -263,4 +263,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.finish();
+    }
 }

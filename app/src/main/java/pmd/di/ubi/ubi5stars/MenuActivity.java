@@ -33,22 +33,21 @@ public class MenuActivity extends Activity {
         llNotLogged = findViewById(R.id.ll_not_loged);
 
         mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
 
-        updateUI(user);
+        updateUI();
     }
 
-    public void updateUI(FirebaseUser user) {
-        if (user != null) {
-            llLogged.setVisibility(View.VISIBLE);
-            llNotLogged.setVisibility(View.INVISIBLE);
-            imageView = findViewById(R.id.profile_picture);
-            tvName = findViewById(R.id.profile_name);
+    public void updateUI() {
+        imageView = findViewById(R.id.profile_picture);
+        tvName = findViewById(R.id.profile_name);
 
-            mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    llLogged.setVisibility(View.VISIBLE);
+                    llNotLogged.setVisibility(View.INVISIBLE);
                     if (user.getPhotoUrl() != null) {
                         Picasso.with(MenuActivity.this)
                                 .load(user.getPhotoUrl())
@@ -57,15 +56,20 @@ public class MenuActivity extends Activity {
                                 .into(imageView);
                     }
                     tvName.setText(user.getDisplayName());
+                } else {
+                    llLogged.setVisibility(View.INVISIBLE);
+                    llNotLogged.setVisibility(View.VISIBLE);
                 }
-            });
-        }
+            }
+        });
+
     }
 
     public void login(View v) {
         Intent i = new Intent(this, LoginActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(new Intent(this, LoginActivity.class));
+        super.finish();
     }
 
     public void register(View v) {
@@ -74,9 +78,12 @@ public class MenuActivity extends Activity {
 
     public void map(View v) {
         startActivity(new Intent(this, MapActivity.class));
+        super.finish();
     }
 
-    public void search(View v) { startActivity(new Intent(this, SearchActivity.class)); }
+    public void search(View v) {
+        startActivity(new Intent(this, SearchActivity.class));
+    }
 
     public void trail(View v) {
         startActivity(new Intent(this, TrailsActivity.class));
@@ -88,9 +95,6 @@ public class MenuActivity extends Activity {
 
     public void logout(View v) {
         mAuth.signOut();
-        Intent i = new Intent(this, LoginActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
         super.finish();
     }
 
@@ -100,5 +104,6 @@ public class MenuActivity extends Activity {
 
     public void toProfile(View v) {
         startActivity(new Intent(this, UserProfileActivity.class));
+        super.finish();
     }
 }

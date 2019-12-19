@@ -72,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     Intent i = new Intent(RegisterActivity.this, MapActivity.class);
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);
+                                    RegisterActivity.super.finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                                 }
@@ -84,5 +85,4 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.pwd_check, Toast.LENGTH_SHORT).show();
         }
     }
-
 }

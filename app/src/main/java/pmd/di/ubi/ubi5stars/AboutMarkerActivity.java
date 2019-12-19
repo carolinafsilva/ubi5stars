@@ -81,6 +81,11 @@ public class AboutMarkerActivity extends Activity {
         super.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.finish();
+    }
+
     public void submitComment() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

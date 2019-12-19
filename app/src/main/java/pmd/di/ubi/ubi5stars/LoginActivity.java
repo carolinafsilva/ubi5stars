@@ -32,7 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void showMenu(View v) {
-        startActivity(new Intent(this, MenuActivity.class));
+        startActivity(new Intent(this, MapActivity.class));
+        super.finish();
     }
 
     public void login(View v) {
@@ -48,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), R.string.successful_login, Toast.LENGTH_LONG).show();
 
                             Intent i = new Intent(LoginActivity.this, MapActivity.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                             finish();
                         } else {
@@ -60,5 +60,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void startRegistry(View view) {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        super.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.finish();
     }
 }

@@ -64,6 +64,7 @@ public class RankingActivity extends AppCompatActivity {
                             Intent i = new Intent(RankingActivity.this, AboutMarkerActivity.class);
                             i.putExtra("locationName", location.getText().toString());
                             startActivity(i);
+                            RankingActivity.super.finish();
                         }
                     });
                 }
@@ -71,7 +72,6 @@ public class RankingActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }

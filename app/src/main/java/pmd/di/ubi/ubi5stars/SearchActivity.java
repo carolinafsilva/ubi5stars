@@ -83,6 +83,7 @@ public class SearchActivity extends AppCompatActivity {
                                 Intent i = new Intent(SearchActivity.this, AboutMarkerActivity.class);
                                 i.putExtra("locationName", location.getText().toString());
                                 startActivity(i);
+                                SearchActivity.super.finish();
                             }
                         });
                     }
@@ -94,5 +95,10 @@ public class SearchActivity extends AppCompatActivity {
                 Toast.makeText(SearchActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.finish();
     }
 }
