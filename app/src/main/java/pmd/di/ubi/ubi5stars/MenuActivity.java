@@ -28,7 +28,7 @@ public class MenuActivity extends Activity {
     public void search(View v) { startActivity(new Intent(this, SearchActivity.class)); }
 
     public void trail(View v) {
-        startActivity(new Intent(this, ShowLocation.class));
+        startActivity(new Intent(this, TrailsActivity.class));
     }
 
     public void settings(View v) {

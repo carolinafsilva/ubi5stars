@@ -58,6 +58,16 @@ public class SearchActivity extends Activity {
                                 .into(imageView);
 
                         searchResult.addView(ll);
+
+                        ll.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                TextView location = v.findViewById(R.id.location);
+                                Intent i = new Intent(SearchActivity.this, AboutMarkerActivity.class);
+                                i.putExtra("locationName", location.getText().toString());
+                                startActivity(i);
+                            }
+                        });
                     }
                 }
             }
@@ -67,12 +77,5 @@ public class SearchActivity extends Activity {
                 Toast.makeText(SearchActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void openMap(View v) {
-        Intent i = new Intent(this, MapActivity.class);
-        TextView location = searchResult.findViewById(R.id.location);
-        i.putExtra("location", location.getText().toString());
-        startActivity(i);
     }
 }

@@ -146,7 +146,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void showMenu(View v) {
-        startActivity(new Intent(MapActivity.this, MenuActivity.class));
+        /*Intent i = new Intent(MapActivity.this, MenuActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);*/
+        super.finish();
     }
 
     public void filter(View v) {
