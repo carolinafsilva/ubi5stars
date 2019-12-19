@@ -87,5 +87,9 @@
     <string name="transport">Transporte</string>
     <string name="filter">Filtrar</string>
     <string name="guest_enter">Entrar como visitante</string>
+    <string name="invalid_user">Nome de utilizador inválido.</string>
+    <string name="pwd_check">Os campos das palavras-chave têm de ser iguais.</string>
+    <string name="new_username_alert">Nome de utilizador editado.</string>
+    <string name="new_password_alert">Palavra-chave editada.</string>
 
 </resources>

@@ -2,6 +2,7 @@ package pmd.di.ubi.ubi5stars;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,23 +14,27 @@ public class TrailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trails);
     }
 
-    // Ou apenas fazer um método e depois faz-se um switch dependendo do ID da view
-
     public void getCurrCoord(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 
     public void traceTrail(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 
     public void museumTrail(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 
     public void urbanartTrail(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 
     public void gardenTrail(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 
     public void nightlifeTrail(View view) {
+        Toast.makeText(getApplicationContext(), "Coming soon", Toast.LENGTH_LONG).show();
     }
 }
