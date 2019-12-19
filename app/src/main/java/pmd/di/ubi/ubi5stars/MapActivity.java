@@ -70,20 +70,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
-        mAdView.setAdListener(new com.google.android.gms.ads.AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.e("onAdLoaded","AdLoaded");
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                super.onAdFailedToLoad(errorCode);
-                Log.e("onAdFailedToLoad",""+errorCode);
-
-            }
-        });
         mAdView.loadAd(adRequest);
 
         // Verify internet connection
