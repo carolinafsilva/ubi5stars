@@ -70,7 +70,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork == null) {
-            Toast.makeText(getApplicationContext(),"Internet not available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),R.string.network_warning,Toast.LENGTH_SHORT).show();
         }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

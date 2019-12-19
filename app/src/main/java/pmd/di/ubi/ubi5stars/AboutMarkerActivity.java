@@ -85,10 +85,10 @@ public class AboutMarkerActivity extends Activity {
 
         String username;
         if (user == null) {
-            Toast.makeText(this, "Log in to comment", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.comment_warning, Toast.LENGTH_SHORT).show();
         } else {
             if (Math.round(rating) == 0) {
-                Toast.makeText(this, "Submeta uma avaliação", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.rating_warning, Toast.LENGTH_SHORT).show();
             } else {
                 username = user.getDisplayName();
 

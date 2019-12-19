@@ -68,5 +68,23 @@
     <string name="successful_comment">Comentário submetido com sucesso!</string>
     <string name="enter_username">Inserir nome de utilizador</string>
     <string name="empty_user">Visitante</string>
+    <string name="comment_warning">Por favor, inicie sessão para comentar.</string>
+    <string name="rating_warning">Por favor, insira uma avaliação.</string>
+    <string name="network_warning">Internet não está disponível</string>
+    <string name="deleted_info">Os seus dados de utilizador foram apagados.</string>
+    <string name="date_format">dd/mm/aaaa</string>
+    <string name="location_name">Nome de localização</string>
+    <string name="location_description">Descrição de localização</string>
+    <string name="best_5places">Os 5 melhores lugares da Covilhã</string>
+    <string name="category">Categorias</string>
+    <string name="monuments">Monumentos</string>
+    <string name="museums">Museus</string>
+    <string name="urban_art">Arte Urbana</string>
+    <string name="lounge_zone">Zona Lazer</string>
+    <string name="commercial_zone">Zona Comercial</string>
+    <string name="sports_zone">Zona Desportiva</string>
+    <string name="studantry_zone">Zona Estudantil</string>
+    <string name="transport">Transporte</string>
+    <string name="filter">Filtrar</string>
 
 </resources>
