@@ -47,34 +47,41 @@ public class RegisterActivity extends AppCompatActivity {
         email = emailET.getText().toString();
         password = passwordET.getText().toString();
         if (password.equals(passwordConfirmationET.getText().toString())) {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), R.string.successful_register, Toast.LENGTH_LONG).show();
+            if (!name.trim().equals("")) {
 
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                mAuth.createUserWithEmailAndPassword(email, password).
+                        addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), R.string.successful_register, Toast.LENGTH_LONG).show();
 
-                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                        .setDisplayName(name).build();
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                user.updateProfile(profileUpdates)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(name).build();
+
+                                    user.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                    }
                                                 }
-                                            }
-                                        });
-                            } else {
-                                Toast.makeText(getApplicationContext(), R.string.failed_register, Toast.LENGTH_LONG).show();
+                                            });
+                                    Intent i = new Intent(RegisterActivity.this, MapActivity.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
-            Intent i = new Intent(RegisterActivity.this, MapActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
+                        });
+            } else {
+                Toast.makeText(this, "Invalid username", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Passwords must be equal", Toast.LENGTH_SHORT).show();
         }
     }
 
