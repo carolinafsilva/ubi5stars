@@ -163,7 +163,7 @@ public class AboutMarkerActivity extends Activity {
 
                     tvUsername.setText(c.getUsername());
                     tvDate.setText(date);
-                    ratingBar.setRating((float) c.getRating());
+                    ratingBar.setRating(c.getRating());
                     tvCommentText.setText(c.getText());
 
                     comment_section.addView(ll);
