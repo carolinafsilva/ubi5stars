@@ -8,50 +8,101 @@
     android:orientation="vertical"
     tools:context=".MenuActivity">
 
-    <LinearLayout
-        android:id="@+id/menu_ll"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/catalinaBlue"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="15dp">
+        <LinearLayout
+            android:id="@+id/ll_logged"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/catalinaBlue"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/profile_picture"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick="toProfile"
-                android:scaleType="centerCrop"
-                android:src="@drawable/android_person" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="15dp">
 
-        </FrameLayout>
+                <ImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:onClick="toProfile"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/android_person" />
 
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:maxWidth="90dp"
-            android:text="@string/user"
-            android:textColor="@color/colorWhite" />
+            </FrameLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:onClick="logout"
-            android:text="@string/logout"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:maxWidth="90dp"
+                android:text="@string/user"
+                android:textColor="@color/colorWhite" />
 
-    </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="logout"
+                android:text="@string/logout"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_not_loged"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/catalinaBlue"
+            android:gravity="center"
+            android:visibility="visible"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="15dp">
+
+                <ImageView
+                    android:id="@+id/profile_picture1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:onClick="toProfile"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/android_person" />
+
+            </FrameLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="login"
+                android:text="Login"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="register"
+                android:text="Registo"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

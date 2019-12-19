@@ -3,6 +3,7 @@ package pmd.di.ubi.ubi5stars;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -49,6 +50,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private boolean zonaDesportiva;
     private boolean zonaEstudantil;
     private boolean transportes;
+
+    private SharedPreferences sp;
 
     private static String locationsCollection = "locations";
 
@@ -150,16 +153,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void placeMarkers() {
         mMap.clear();
 
-        Intent i = getIntent();
-
-        monument = i.getBooleanExtra("monumentos", true);
-        museus = i.getBooleanExtra("museus", true);
-        arteUrbana = i.getBooleanExtra("arteUrbana", true);
-        zonaLazer = i.getBooleanExtra("zonaLazer", true);
-        zonaComercial = i.getBooleanExtra("zonaComercial", true);
-        zonaDesportiva = i.getBooleanExtra("zonaDesportiva", true);
-        zonaEstudantil = i.getBooleanExtra("zonaEstudantil", true);
-        transportes = i.getBooleanExtra("transportes", true);
+        sp = getSharedPreferences("Filters", 0);
+        monument = sp.getBoolean("monumentos", true);
+        museus = sp.getBoolean("museus", true);
+        arteUrbana = sp.getBoolean("arteUrbana", false);
+        zonaLazer = sp.getBoolean("zonaLazer", false);
+        zonaComercial = sp.getBoolean("zonaComercial", false);
+        zonaDesportiva = sp.getBoolean("zonaDesportiva", false);
+        zonaEstudantil = sp.getBoolean("zonaEstudantil", false);
+        transportes = sp.getBoolean("transportes", false);
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
         databaseRef.addValueEventListener(new ValueEventListener() {

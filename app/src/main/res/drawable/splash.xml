@@ -3,7 +3,7 @@
 
     <item android:drawable="@color/colorWhite"/>
     <item>
-        <inset android:drawable="@drawable/ic_launcher_foreground"/>
+        <inset android:drawable="@drawable/ic_gps" />
     </item>
 
 </layer-list>

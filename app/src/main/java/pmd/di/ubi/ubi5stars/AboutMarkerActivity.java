@@ -61,6 +61,13 @@ public class AboutMarkerActivity extends Activity {
 
         Intent i = getIntent();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            ratingBar.setIsIndicator(true);
+            etCommentText.setEnabled(false);
+        }
+
         String name = i.getStringExtra("locationName");
 
         getLocation(name);
@@ -78,45 +85,50 @@ public class AboutMarkerActivity extends Activity {
 
         String username;
         if (user == null) {
-            username = "anonymous";
+            Toast.makeText(this, "Log in to comment", Toast.LENGTH_SHORT).show();
         } else {
-            username = user.getEmail();
+            if (Math.round(rating) == 0) {
+                Toast.makeText(this, "Submeta uma avaliação", Toast.LENGTH_SHORT).show();
+            } else {
+                username = user.getDisplayName();
+
+                String location = tvName.getText().toString();
+                CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
+
+                DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
+                locationRef.orderByChild("name").equalTo(location).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
+                        LocationCollection l = ds.getValue(LocationCollection.class);
+                        float sum = l.getSum() + rating;
+                        float total = l.getTotal() + 1;
+                        float rating = sum / total;
+                        DatabaseReference db = ds.getRef();
+                        db.child("sum").setValue(sum);
+                        db.child("total").setValue(total);
+                        db.child("rating").setValue(rating);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
+                String uploadID = databaseRef.push().getKey();
+                databaseRef.child(uploadID).setValue(commentCollection).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        etCommentText.setText("");
+                        ratingBar.setRating(0);
+                        Toast.makeText(AboutMarkerActivity.this, R.string.successful_comment, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
-        String location = tvName.getText().toString();
-        CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
-
-        DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-        locationRef.orderByChild("name").equalTo(location).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
-                LocationCollection l = ds.getValue(LocationCollection.class);
-                float sum = l.getSum() + rating;
-                float total = l.getTotal() + 1;
-                float rating = sum / total;
-                DatabaseReference db = ds.getRef();
-                db.child("sum").setValue(sum);
-                db.child("total").setValue(total);
-                db.child("rating").setValue(rating);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
-        String uploadID = databaseRef.push().getKey();
-        databaseRef.child(uploadID).setValue(commentCollection).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                etCommentText.setText("");
-                ratingBar.setRating(0);
-                Toast.makeText(AboutMarkerActivity.this, R.string.successful_comment, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void getLocation(String name) {
