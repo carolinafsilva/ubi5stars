@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MenuActivity extends Activity {
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public void login(View v) {
@@ -36,9 +42,8 @@ public class MenuActivity extends Activity {
     }
 
     public void logout(View v) {
-        // TODO: Actually logout e ir de volta para a LoginActivity.class
+        mAuth.signOut();
         startActivity(new Intent(this, LoginActivity.class));
-
     }
 
     public void ranking(View v) {

@@ -21,7 +21,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordET;
     private EditText passwordConfirmationET;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

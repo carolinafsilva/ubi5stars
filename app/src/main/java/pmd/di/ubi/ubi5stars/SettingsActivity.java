@@ -1,6 +1,5 @@
 package pmd.di.ubi.ubi5stars;
 
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -12,12 +11,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    FirebaseAuth mAuth;
 
     private SharedPreferences oSP;
     private SharedPreferences.Editor oSPE;
@@ -27,6 +33,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        mAuth = FirebaseAuth.getInstance();
 
         oSP = getSharedPreferences("Local_Settings", 0);
 
@@ -79,33 +87,22 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         res.updateConfiguration(conf, dm);
     }
 
-    public void deleteUserPrompt(View view) {
-        new AlertDialog.Builder(getBaseContext())
-                .setTitle(R.string.del_prompt_title)
-                .setMessage(R.string.del_prompt)
+    public void deleteUser(View v) {
 
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (deleteUser())
-                            Toast.makeText(getBaseContext(), R.string.succ_operation, Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(getBaseContext(), R.string.unsucc_operation, Toast.LENGTH_SHORT).show();
-                    }
-                })
-
-                .setNegativeButton(android.R.string.no, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
-    public boolean deleteUser() {
-
-        // TODO: IMPLEMENT
-
-        // Como é que a informação do user chega aqui?
-        // actually delete user
-
-        return true;
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            user.delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Account deleted", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+        } else {
+            Toast.makeText(getApplicationContext(), "No user logged in", Toast.LENGTH_LONG).show();
+        }
     }
 
     // Idioma
