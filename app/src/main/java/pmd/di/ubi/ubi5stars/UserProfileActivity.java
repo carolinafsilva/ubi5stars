@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
 public class UserProfileActivity extends AppCompatActivity {
 
     FirebaseUser user;
-
+    FirebaseAuth mAuth;
     private int PICK_IMAGE_REQUEST = 1;
 
     private ImageView mImageView;
@@ -49,7 +49,8 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         mImageView = findViewById(R.id.photo);
 
@@ -57,7 +58,6 @@ public class UserProfileActivity extends AppCompatActivity {
             TVuser = findViewById(R.id.up_username);
             TVemail = findViewById(R.id.up_emailaddr);
 
-            TVuser.setText(user.getDisplayName());
             TVemail.setText(user.getEmail());
 
             Picasso.with(UserProfileActivity.this)
@@ -65,6 +65,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     .fit()
                     .centerCrop()
                     .into(mImageView);
+            TVuser.setText(user.getDisplayName());
         }
 
         storageRef = FirebaseStorage.getInstance().getReference("profile_pictures");
@@ -93,6 +94,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Updated username", Toast.LENGTH_LONG).show();
+                                    TVuser.setText(user.getDisplayName());
                                 }
                             }
                         });

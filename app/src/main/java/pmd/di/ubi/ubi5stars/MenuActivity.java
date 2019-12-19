@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -18,6 +20,8 @@ public class MenuActivity extends Activity {
     FirebaseUser user;
     private LinearLayout llLogged;
     private LinearLayout llNotLogged;
+    private ImageView imageView;
+    private TextView tvName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +41,22 @@ public class MenuActivity extends Activity {
         if (user != null) {
             llLogged.setVisibility(View.VISIBLE);
             llNotLogged.setVisibility(View.INVISIBLE);
-            ImageView iv = findViewById(R.id.profile_picture);
-            TextView tv = findViewById(R.id.profile_name);
+            imageView = findViewById(R.id.profile_picture);
+            tvName = findViewById(R.id.profile_name);
 
-            Picasso.with(MenuActivity.this)
-                    .load(user.getPhotoUrl())
-                    .fit()
-                    .centerCrop()
-                    .into(iv);
-            tv.setText(user.getDisplayName());
-        } else {
-            llLogged.setVisibility(View.INVISIBLE);
-            llNotLogged.setVisibility(View.VISIBLE);
+
+            mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    Picasso.with(MenuActivity.this)
+                            .load(user.getPhotoUrl())
+                            .fit()
+                            .centerCrop()
+                            .into(imageView);
+                    tvName.setText(user.getDisplayName());
+                }
+            });
         }
     }
 
