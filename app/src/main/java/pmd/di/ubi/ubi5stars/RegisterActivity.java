@@ -13,10 +13,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private EditText displayNameET;
     private EditText emailET;
     private EditText passwordET;
     private EditText passwordConfirmationET;
@@ -28,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        displayNameET = findViewById(R.id.r_display_name);
         emailET = findViewById(R.id.r_email);
         passwordET = findViewById(R.id.r_password);
         passwordConfirmationET = findViewById(R.id.r_password_confirmation);
@@ -38,7 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View v) {
-        final String email, password;
+        final String name, email, password;
+        name = displayNameET.getText().toString();
         email = emailET.getText().toString();
         password = passwordET.getText().toString();
         if (password.equals(passwordConfirmationET.getText().toString())) {
@@ -49,22 +54,27 @@ public class RegisterActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), R.string.successful_register, Toast.LENGTH_LONG).show();
 
-                                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                // TODO: Isto pode fluir assim? Vejam no Login o onActivityResult
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(name).build();
 
-                                i.putExtra("email", email);
-                                i.putExtra("password", password);
-                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                setResult(RESULT_OK, i);
-
-                                finish();
-
+                                user.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                }
+                                            }
+                                        });
                             } else {
                                 Toast.makeText(getApplicationContext(), R.string.failed_register, Toast.LENGTH_LONG).show();
                             }
                         }
                     });
+            Intent i = new Intent(RegisterActivity.this, MapActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
         }
     }
 

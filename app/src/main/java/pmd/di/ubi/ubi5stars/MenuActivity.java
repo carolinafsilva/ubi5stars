@@ -40,7 +40,7 @@ public class MenuActivity extends Activity {
             TextView tv = findViewById(R.id.profile_name);
 
             iv.setImageURI(user.getPhotoUrl());
-            tv.setText(user.getEmail());
+            tv.setText(user.getDisplayName());
         } else {
             llLogged.setVisibility(View.INVISIBLE);
             llNotLogged.setVisibility(View.VISIBLE);
