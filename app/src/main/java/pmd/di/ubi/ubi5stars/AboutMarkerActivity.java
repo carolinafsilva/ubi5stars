@@ -30,9 +30,11 @@ import java.text.SimpleDateFormat;
 public class AboutMarkerActivity extends Activity {
 
     private RatingBar ratingBar;
+    private RatingBar avgRating;
     private EditText etCommentText;
     private TextView tvName;
     private TextView tvDescription;
+    private TextView tvNumRatings;
     private ImageView imageView;
     private Button bSubmit;
     private LinearLayout comment_section;
@@ -54,6 +56,8 @@ public class AboutMarkerActivity extends Activity {
         ratingBar = findViewById(R.id.rating);
         bSubmit = findViewById(R.id.submit_btn);
         comment_section = findViewById(R.id.comment_section);
+        tvNumRatings = findViewById(R.id.tv_num_ratings);
+        avgRating = findViewById(R.id.avg_rating);
 
         Intent i = getIntent();
 
@@ -108,6 +112,7 @@ public class AboutMarkerActivity extends Activity {
         databaseRef.child(uploadID).setValue(commentCollection).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                etCommentText.setText("");
                 Toast.makeText(AboutMarkerActivity.this, R.string.successful_comment, Toast.LENGTH_SHORT).show();
             }
         });
@@ -127,7 +132,8 @@ public class AboutMarkerActivity extends Activity {
                         .fit()
                         .centerCrop()
                         .into(imageView);
-
+                avgRating.setRating(l.getRating());
+                tvNumRatings.setText("(" + ((int) l.getTotal()) + " reviews)");
                 bSubmit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
