@@ -53,8 +53,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
     public void editUserData(View view) {
 
-
-
         if (user != null) {
 
             ETuser = findViewById(R.id.up_ins_email);
