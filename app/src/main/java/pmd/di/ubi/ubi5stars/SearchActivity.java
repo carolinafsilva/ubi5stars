@@ -1,6 +1,7 @@
 package pmd.di.ubi.ubi5stars;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -66,5 +67,12 @@ public class SearchActivity extends Activity {
                 Toast.makeText(SearchActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void openMap(View v) {
+        Intent i = new Intent(this, MapActivity.class);
+        TextView location = searchResult.findViewById(R.id.location);
+        i.putExtra("location", location.getText().toString());
+        startActivity(i);
     }
 }
