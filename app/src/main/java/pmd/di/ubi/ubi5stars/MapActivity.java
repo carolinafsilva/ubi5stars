@@ -19,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -81,6 +82,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
+
+
+            //get latlong for corners for specified place
+            LatLng one = new LatLng(40.423003, -7.871293);
+            LatLng two = new LatLng(40.115775, -7.143812);
+
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
+            //add them to builder
+            builder.include(one);
+            builder.include(two);
+
+            LatLngBounds bounds = builder.build();
+
+            //get width and height to current display screen
+            int width = getResources().getDisplayMetrics().widthPixels;
+            int height = getResources().getDisplayMetrics().heightPixels;
+
+            // 20% padding
+            int padding = (int) (width * 0.20);
+
+            //set latlong bounds
+            mMap.setLatLngBoundsForCameraTarget(bounds);
+
+            //move camera to fill the bound to screen
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
+
+            //set zoom to level to current so that you won't be able to zoom out viz. move outside bounds
+            mMap.setMinZoomPreference(mMap.getCameraPosition().zoom);
+
 
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
