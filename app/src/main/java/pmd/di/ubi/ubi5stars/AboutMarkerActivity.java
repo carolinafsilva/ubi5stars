@@ -152,10 +152,10 @@ public class AboutMarkerActivity extends Activity {
 
     private void getComments(String location) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
-
         databaseRef.orderByChild("location").equalTo(location).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                comment_section.removeAllViews();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     CommentCollection c = ds.getValue(CommentCollection.class);
                     SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
@@ -173,7 +173,7 @@ public class AboutMarkerActivity extends Activity {
                     ratingBar.setRating(c.getRating());
                     tvCommentText.setText(c.getText());
 
-                    comment_section.addView(ll);
+                    comment_section.addView(ll, 0);
                 }
             }
 

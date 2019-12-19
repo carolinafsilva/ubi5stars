@@ -53,11 +53,11 @@ public class SearchActivity extends Activity {
 
     public void search(View v) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-        searchResult.removeAllViews();
         final String name = tvSearchBar.getText().toString().toLowerCase();
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                searchResult.removeAllViews();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
                     if (l.getName().toLowerCase().contains(name) || l.getCategory().toLowerCase().equals(name)) {

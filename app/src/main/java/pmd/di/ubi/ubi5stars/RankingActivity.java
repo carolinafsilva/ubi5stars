@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,7 @@ public class RankingActivity extends Activity {
     public void getTop() {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
 
-        databaseRef.orderByChild("rating").limitToFirst(5).addValueEventListener(new ValueEventListener() {
+        databaseRef.orderByChild("rating").limitToLast(5).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -42,7 +43,7 @@ public class RankingActivity extends Activity {
 
                     ImageView imageView = ll.findViewById(R.id.image_view);
                     TextView tvLocation = ll.findViewById(R.id.tv_location_name);
-
+                    RatingBar ratingBar = ll.findViewById(R.id.avg_rating);
                     Picasso.with(RankingActivity.this)
                             .load(l.getImageURL())
                             .fit()
@@ -50,9 +51,9 @@ public class RankingActivity extends Activity {
                             .into(imageView);
 
                     tvLocation.setText(l.getName());
+                    ratingBar.setRating(l.getRating());
 
-
-                    llRanking.addView(ll);
+                    llRanking.addView(ll, 0);
                 }
             }
 

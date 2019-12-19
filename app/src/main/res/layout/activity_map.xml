@@ -42,6 +42,7 @@
         android:id="@+id/map_ll"
         app:layout_constraintBottom_toBottomOf="parent">
 
+
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,14 +52,13 @@
             android:text="filter"
             android:onClick="filter" />
 
-        <Button
-            android:layout_width="0dp"
+        <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:layout_weight="1"
-            android:text="@string/search"
+            android:src="@drawable/ic_search_white_24dp"
             android:onClick="search" />
+
+
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView

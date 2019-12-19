@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#003975</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="catalinaBlue">#062a78</color>
+    <color name="catalinaBlue">#003975</color>
     <color name="goldish">#bf9b30</color>
     <color name="goldash">#ffcf40</color>
     <color name="bleu">#add8e6</color>
