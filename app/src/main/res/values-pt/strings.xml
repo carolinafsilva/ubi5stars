@@ -45,5 +45,6 @@
     <string name="successful_login">Iniciada a sessão!</string>
     <string name="failed_login">Sessão não iniciada, tenta mais tarde</string>
     <string name="successful_comment">Comentário submetido com sucesso!</string>
+    <string name="empty_user">Visitante</string>
 
 </resources>

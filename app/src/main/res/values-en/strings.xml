@@ -57,4 +57,5 @@
     <string name="successful_login">Login successful!</string>
     <string name="failed_login">Login failed! Try again later</string>
     <string name="successful_comment">Comment submited!</string>
+    <string name="empty_user">Instanced User</string>
 </resources>
