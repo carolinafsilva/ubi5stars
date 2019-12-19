@@ -35,15 +35,14 @@ public class SearchActivity extends Activity {
 
     public void search(View v) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-
-        final String name = tvSearchBar.getText().toString();
-
-        databaseRef.orderByChild("name").addValueEventListener(new ValueEventListener() {
+        searchResult.removeAllViews();
+        final String name = tvSearchBar.getText().toString().toLowerCase();
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
-                    if (l.getName().contains(name)) {
+                    if (l.getName().toLowerCase().contains(name)) {
                         LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.search_result, null);
 
                         TextView tvLocation = ll.findViewById(R.id.location);
