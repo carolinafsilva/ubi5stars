@@ -3,17 +3,17 @@ package pmd.di.ubi.ubi5stars;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Comment {
+public class CommentCollection {
     private String text;
     private String location;
     private String username;
     private Date date;
     private float rating;
 
-    public Comment() {
+    public CommentCollection() {
     }
 
-    public Comment(String text, String user, String location, float rating) {
+    public CommentCollection(String text, String user, String location, float rating) {
         this.text = text;
         this.location = location;
         this.username = user;

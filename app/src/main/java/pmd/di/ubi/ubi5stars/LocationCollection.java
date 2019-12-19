@@ -1,6 +1,6 @@
 package pmd.di.ubi.ubi5stars;
 
-public class Location {
+public class LocationCollection {
     private String name;
     private String category;
     private String description;
@@ -10,10 +10,10 @@ public class Location {
     private double total;
     private String imageURL;
 
-    public Location() {
+    public LocationCollection() {
     }
 
-    public Location(String name, String category, String description, double lat, double lon, double sum, double total, String imageURL) {
+    public LocationCollection(String name, String category, String description, double lat, double lon, double sum, double total, String imageURL) {
         this.name = name;
         this.category = category;
         this.description = description;

@@ -42,12 +42,12 @@ public class ShowLocation extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Location location = ds.getValue(Location.class);
-                    tvName.setText(location.getName());
-                    tvDescription.setText(location.getDescription());
-                    System.out.println(location.getImageURL());
+                    LocationCollection locationCollection = ds.getValue(LocationCollection.class);
+                    tvName.setText(locationCollection.getName());
+                    tvDescription.setText(locationCollection.getDescription());
+                    System.out.println(locationCollection.getImageURL());
                     Picasso.with(ShowLocation.this)
-                            .load(location.getImageURL())
+                            .load(locationCollection.getImageURL())
                             .fit()
                             .centerCrop()
                             .into(imageView);

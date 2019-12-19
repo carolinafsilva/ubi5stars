@@ -1,13 +1,13 @@
 package pmd.di.ubi.ubi5stars;
 
-public class User {
+public class UserCollection {
     private String name;
     private String imageURL;
 
-    public User() {
+    public UserCollection() {
     }
 
-    public User(String name, String imageURL) {
+    public UserCollection(String name, String imageURL) {
         this.name = name;
         this.imageURL = imageURL;
     }

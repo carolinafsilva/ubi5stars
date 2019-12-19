@@ -29,7 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    // private LocationManager locationManager;
     private int TAG_CODE_PERMISSION_LOCATION = 0;
     private GoogleMap mMap;
     private AdView mAdView;
@@ -57,20 +56,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
+
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
             mMap.getUiSettings().setMapToolbarEnabled(true);
             mMap.getUiSettings().setRotateGesturesEnabled(true);
             mMap.getUiSettings().setZoomGesturesEnabled(true);
 
-
-            // Obter posição do utilizador
-            // locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            // Location myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            // LatLng currentPosition = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
-            // mMap.addMarker(new MarkerOptions().position(currentPosition).title("Eu!").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-
-            getMarkers(mMap);
+            // place markers
+            placeMarkers(mMap);
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
@@ -93,18 +87,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION}, TAG_CODE_PERMISSION_LOCATION);
         }
-
-
     }
 
-    private void getMarkers(final GoogleMap mMap) {
+    private void placeMarkers(final GoogleMap mMap) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    pmd.di.ubi.ubi5stars.Location l = ds.getValue(pmd.di.ubi.ubi5stars.Location.class);
+                    LocationCollection l = ds.getValue(LocationCollection.class);
                     float f = 0.0f;
                     switch (l.getCategory()) {
                         case "Monumento":
@@ -133,7 +124,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             break;
                     }
                     if (l.getName().equals("Reitoria")) {
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLat(), l.getLon()), 15));
                     } else {
                         mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));

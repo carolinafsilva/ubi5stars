@@ -88,11 +88,11 @@ public class AboutMarkerActivity extends Activity {
             username = user.getEmail();
         }
         String location = tvName.getText().toString();
-        Comment comment = new Comment(commentText, username, location, rating);
+        CommentCollection commentCollection = new CommentCollection(commentText, username, location, rating);
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(commentsCollection);
         String uploadID = databaseRef.push().getKey();
-        databaseRef.child(uploadID).setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseRef.child(uploadID).setValue(commentCollection).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(AboutMarkerActivity.this, "Comentário Submetido com sucesso", Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ public class AboutMarkerActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
-                final Location l = ds.getValue(Location.class);
+                final LocationCollection l = ds.getValue(LocationCollection.class);
                 tvName.setText(l.getName());
                 tvDescription.setText(l.getDescription());
                 Picasso.with(AboutMarkerActivity.this)
@@ -137,7 +137,7 @@ public class AboutMarkerActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Comment c = ds.getValue(Comment.class);
+                    CommentCollection c = ds.getValue(CommentCollection.class);
                     SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
                     String date = formater.format(c.getDate());
                     LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.comment_section, null);
@@ -154,7 +154,6 @@ public class AboutMarkerActivity extends Activity {
                     tvCommentText.setText(c.getText());
 
                     comment_section.addView(ll);
-
                 }
             }
 
