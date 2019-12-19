@@ -91,7 +91,7 @@
         <item>@string/pt</item>
         <item>@string/en</item>
     </string-array>
-    <string name="coming_soon">Funcionalidade a ser implementada no próximo update™.</string>
+    <string name="coming_soon">Funcionalidade a ser implementa no futuro!</string>
     <string name="pfp_upload">Atualizar</string>
     <string name="updated_pfp">Foto de perfil atualizada!</string>
 

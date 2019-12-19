@@ -81,7 +81,7 @@
     <string name="pwd_check">Both password fields must be equal.</string>
     <string name="new_password_alert">Password edited.</string>
     <string name="new_username_alert">Username edited.</string>
-    <string name="coming_soon">Functionaly coming soon™!</string>
+    <string name="coming_soon">Functionality coming soon!</string>
     <string name="pfp_upload">Upload</string>
     <string name="updated_pfp">Profile picture updated!</string>
 </resources>
