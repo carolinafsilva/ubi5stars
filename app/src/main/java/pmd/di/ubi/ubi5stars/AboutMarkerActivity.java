@@ -39,6 +39,8 @@ public class AboutMarkerActivity extends Activity {
     private Button bSubmit;
     private LinearLayout comment_section;
 
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
 
     private static String commentsCollection = "comments";
     private static String locationsCollection = "locations";
@@ -48,6 +50,9 @@ public class AboutMarkerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markerinfo);
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         etCommentText = findViewById(R.id.comment_text);
         tvName = findViewById(R.id.name);
@@ -90,9 +95,9 @@ public class AboutMarkerActivity extends Activity {
                 Toast.makeText(this, R.string.rating_warning, Toast.LENGTH_SHORT).show();
             } else {
                 String username = user.getDisplayName();
+                final String imageURL = user.getPhotoUrl().toString();
                 String location = tvName.getText().toString();
-                CommentCollection commentCollection = new CommentCollection(commentText, username, location, userRating);
-
+                CommentCollection commentCollection = new CommentCollection(commentText, username, location, imageURL, userRating);
                 DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
                 locationRef.orderByChild("name").equalTo(location).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -111,7 +116,6 @@ public class AboutMarkerActivity extends Activity {
                         db.child("sum").setValue(sum);
                         db.child("total").setValue(total);
                         db.child("rating").setValue(rating);
-
                     }
 
                     @Override
@@ -177,12 +181,17 @@ public class AboutMarkerActivity extends Activity {
                     String date = formater.format(c.getDate());
                     LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.comment_section, null);
 
-
+                    ImageView ivPhoto = ll.findViewById(R.id.user_picture);
                     TextView tvUsername = ll.findViewById(R.id.username);
                     TextView tvDate = ll.findViewById(R.id.date);
                     RatingBar ratingBar = ll.findViewById(R.id.rating);
                     TextView tvCommentText = ll.findViewById(R.id.comment_text);
 
+                    Picasso.with(AboutMarkerActivity.this)
+                            .load(c.getImageURL())
+                            .fit()
+                            .centerCrop()
+                            .into(ivPhoto);
                     tvUsername.setText(c.getUsername());
                     tvDate.setText(date);
                     ratingBar.setRating(c.getRating());

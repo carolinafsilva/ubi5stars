@@ -91,6 +91,7 @@ public class MenuActivity extends Activity {
         Intent i = new Intent(this, LoginActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+        super.finish();
     }
 
     public void ranking(View v) {

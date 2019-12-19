@@ -28,8 +28,8 @@ import com.squareup.picasso.Picasso;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    FirebaseUser user;
-    FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
     private int PICK_IMAGE_REQUEST = 1;
 
     private ImageView mImageView;

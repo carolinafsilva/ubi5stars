@@ -14,15 +14,10 @@ public class LocationCollection {
     public LocationCollection() {
     }
 
-    public LocationCollection(String name, String category, String description, double lat, double lon, String imageURL) {
+    public LocationCollection(String name, String category, String description, String imageURL) {
         this.name = name;
         this.category = category;
         this.description = description;
-        this.lat = lat;
-        this.lon = lon;
-        this.sum = 0;
-        this.total = 0;
-        this.rating = 0;
         this.imageURL = imageURL;
     }
 
