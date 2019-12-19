@@ -89,7 +89,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="login"
-                android:text="Login"
+                android:text="@string/Login"
                 android:textSize="12sp" />
 
             <Button
@@ -98,7 +98,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="register"
-                android:text="Registo"
+                android:text="@string/register"
                 android:textSize="12sp" />
 
         </LinearLayout>

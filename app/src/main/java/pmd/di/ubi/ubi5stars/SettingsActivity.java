@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,17 +25,26 @@ import java.util.Locale;
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     FirebaseAuth mAuth;
+    FirebaseUser FBuser;
 
     private SharedPreferences oSP;
     private SharedPreferences.Editor oSPE;
     private boolean initSpin = true;
+    private Button Bdelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        Bdelete = findViewById(R.id.s_btn2);
+
         mAuth = FirebaseAuth.getInstance();
+        FBuser = mAuth.getCurrentUser();
+
+        if(FBuser == null)
+            Bdelete.setVisibility(View.INVISIBLE);
+
 
         oSP = getSharedPreferences("Local_Settings", 0);
 
@@ -75,7 +85,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     public void setLocale(String lang) {
@@ -89,19 +98,16 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     public void deleteUser(View v) {
 
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            user.delete()
+        if (FBuser != null) {
+            FBuser.delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Account deleted", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.deleted_info, Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-        } else {
-            Toast.makeText(getApplicationContext(), "No user logged in", Toast.LENGTH_LONG).show();
         }
     }
 

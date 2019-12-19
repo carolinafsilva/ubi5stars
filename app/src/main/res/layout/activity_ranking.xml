@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="5 locais imperdíveis na Covilhã"
+        android:text="@string/best_5places"
         android:textColor="@color/colorBlack"
         android:textSize="20sp" />
 

@@ -58,4 +58,22 @@
     <string name="failed_login">Login failed! Try again later</string>
     <string name="successful_comment">Comment submited!</string>
     <string name="empty_user">Instanced User</string>
+    <string name="comment_warning">Please, login to leave a comment.</string>
+    <string name="rating_warning">Please, insert a rating.</string>
+    <string name="network_warning">Internet is not available.</string>
+    <string name="deleted_info">All of your user data has been erased.</string>
+    <string name="date_format">dd/mm/yyyy</string>
+    <string name="location_description">Location description</string>
+    <string name="location_name">Location name</string>
+    <string name="best_5places">The 5 BEST rated places in Covilhã</string>
+    <string name="category">Categories</string>
+    <string name="commercial_zone">Commercial Zone</string>
+    <string name="filter">Filter</string>
+    <string name="lounge_zone">Lounge Zone</string>
+    <string name="monuments">Monuments</string>
+    <string name="museums">Museums</string>
+    <string name="sports_zone">Sports Zone</string>
+    <string name="studantry_zone">Alumnus Zone</string>
+    <string name="transport">Transport</string>
+    <string name="urban_art">Urban Art</string>
 </resources>

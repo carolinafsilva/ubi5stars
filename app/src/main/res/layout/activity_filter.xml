@@ -18,35 +18,35 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categorias" />
+        android:text="@string/category" />
 
     <CheckBox
         android:id="@+id/cb_monumentos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/monumentos"
-        android:text="Monumentos" />
+        android:text="@string/monuments" />
 
     <CheckBox
         android:id="@+id/cb_museus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/museus"
-        android:text="Museus" />
+        android:text="@string/museums" />
 
     <CheckBox
         android:id="@+id/cb_arte_urbana"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/arte_urbana"
-        android:text="Arte Urbana" />
+        android:text="@string/urban_art" />
 
     <CheckBox
         android:id="@+id/cb_zona_lazer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/zona_lazer"
-        android:text="Zona Lazer" />
+        android:text="@string/lounge_zone" />
 
 
     <CheckBox
@@ -54,14 +54,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/zona_comercial"
-        android:text="Zona Comercial" />
+        android:text="@string/commercial_zone" />
 
 
     <CheckBox
         android:id="@+id/cb_zona_desportiva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zona Desportiva" />
+        android:text="@string/sports_zone" />
 
 
     <CheckBox
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/zona_estudantil"
-        android:text="Zona Estudantil" />
+        android:text="@string/studantry_zone" />
 
 
     <CheckBox
@@ -77,12 +77,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/transportes"
-        android:text="Transporte" />
+        android:text="@string/transport" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="onFilterClicked"
-        android:text="Filtrar" />
+        android:text="@string/filter" />
 </LinearLayout>
