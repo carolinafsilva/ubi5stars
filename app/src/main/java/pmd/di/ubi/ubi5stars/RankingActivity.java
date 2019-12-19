@@ -1,6 +1,5 @@
 package pmd.di.ubi.ubi5stars;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -8,6 +7,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class RankingActivity extends Activity {
+public class RankingActivity extends AppCompatActivity {
 
     private final String locationsCollection = "locations";
 
