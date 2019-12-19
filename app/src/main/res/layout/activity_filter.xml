@@ -24,25 +24,28 @@
         android:id="@+id/cb_monumentos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorBlack"
+        android:buttonTint="@color/monumentos"
         android:text="Monumentos" />
 
     <CheckBox
         android:id="@+id/cb_museus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/museus"
         android:text="Museus" />
 
     <CheckBox
         android:id="@+id/cb_arte_urbana"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/arte_urbana"
         android:text="Arte Urbana" />
 
     <CheckBox
         android:id="@+id/cb_zona_lazer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/zona_lazer"
         android:text="Zona Lazer" />
 
 
@@ -50,6 +53,7 @@
         android:id="@+id/cb_zona_comercial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/zona_comercial"
         android:text="Zona Comercial" />
 
 
@@ -64,6 +68,7 @@
         android:id="@+id/cb_zona_estudantil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/zona_estudantil"
         android:text="Zona Estudantil" />
 
 
@@ -71,6 +76,7 @@
         android:id="@+id/cb_transporte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/transportes"
         android:text="Transporte" />
 
     <Button
