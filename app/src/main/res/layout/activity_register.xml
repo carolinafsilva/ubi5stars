@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="Inserir username"
             android:inputType="textEmailAddress" />
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
@@ -47,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="@string/password"
             android:inputType="textPassword" />
@@ -56,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
+            android:padding="5dp"
             android:background="@color/colorAccent"
             android:hint="@string/conf_password"
             android:inputType="textPassword" />
@@ -64,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="register"
+            android:background="@drawable/menu_btn"
             android:text="@string/register" />
 
     </LinearLayout>
