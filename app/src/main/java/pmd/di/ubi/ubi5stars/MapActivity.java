@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -35,7 +34,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private int TAG_CODE_PERMISSION_LOCATION = 0;
     private GoogleMap mMap;
     private AdView mAdView;
+
     private String lastMarkerId = "";
+
+    private boolean monument;
+    private boolean museus;
+    private boolean arteUrbana;
+    private boolean zonaLazer;
+    private boolean zonaComercial;
+    private boolean zonaDesportiva;
+    private boolean zonaEstudantil;
+    private boolean transportes;
 
     private static String locationsCollection = "locations";
 
@@ -56,6 +65,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        Intent i = getIntent();
+
+        monument = i.getBooleanExtra("monumentos", true);
+        museus = i.getBooleanExtra("museus", true);
+        arteUrbana = i.getBooleanExtra("arteUrbana", true);
+        zonaLazer = i.getBooleanExtra("zonaLazer", true);
+        zonaComercial = i.getBooleanExtra("zonaComercial", true);
+        zonaDesportiva = i.getBooleanExtra("zonaDesportiva", true);
+        zonaEstudantil = i.getBooleanExtra("zonaEstudantil", true);
+        transportes = i.getBooleanExtra("transportes", true);
+
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
@@ -94,6 +115,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void placeMarkers(final GoogleMap mMap) {
+        mMap.clear();
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,12 +151,42 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             break;
                     }
 
-                    if (l.getName().equals("Reitoria")) {
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    if (l.getName().equals("Polo Principal")) {
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(l.getLat(), l.getLon()), 15));
-                    } else {
+                    }
+
+                    if (monument && l.getCategory().equals("Monumento")) {
                         mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
                     }
+
+                    if (museus && l.getCategory().equals("Museu")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (arteUrbana && l.getCategory().equals("Arte Urbana")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (zonaLazer && l.getCategory().equals("Zona Lazer")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (zonaComercial && l.getCategory().equals("Zona Comercial")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (zonaDesportiva && l.getCategory().equals("Zona Desportiva")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (zonaEstudantil && l.getCategory().equals("Zona Estudantil")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
+                    if (transportes && l.getCategory().equals("Transporte")) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
+                    }
+
                 }
             }
 
@@ -155,101 +207,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void filter(View v) {
         Intent i = new Intent(this, FilterActivity.class);
         startActivityForResult(i, FILTER_REQ_CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FILTER_REQ_CODE && resultCode == RESULT_OK) {
-
-            final boolean monument = data.getBooleanExtra("monumentos", false);
-            final boolean museus = data.getBooleanExtra("museus", false);
-            final boolean arteUrbana = data.getBooleanExtra("arteUrbana", false);
-            final boolean zonaLazer = data.getBooleanExtra("zonaLazer", false);
-            final boolean zonaComercial = data.getBooleanExtra("zonaComercial", false);
-            final boolean zonaDesportiva = data.getBooleanExtra("zonaDesportiva", false);
-            final boolean zonaEstudantil = data.getBooleanExtra("zonaEstudantil", false);
-            final boolean transportes = data.getBooleanExtra("transportes", false);
-
-            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-            databaseRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    // TODO: BUG: mMap doesnt work in here
-                    mMap.clear();
-
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        LocationCollection l = ds.getValue(LocationCollection.class);
-
-                        float f = 0.0f;
-                        switch (l.getCategory()) {
-                            case "Monumento":
-                                f = BitmapDescriptorFactory.HUE_AZURE;
-                                break;
-                            case "Museu":
-                                f = BitmapDescriptorFactory.HUE_BLUE;
-                                break;
-                            case "Arte Urbana":
-                                f = BitmapDescriptorFactory.HUE_CYAN;
-                                break;
-                            case "Zona Lazer":
-                                f = BitmapDescriptorFactory.HUE_MAGENTA;
-                                break;
-                            case "Zona Comercial":
-                                f = BitmapDescriptorFactory.HUE_ORANGE;
-                                break;
-                            case "Zona Desportiva":
-                                f = BitmapDescriptorFactory.HUE_ROSE;
-                                break;
-                            case "Zona Estudantil":
-                                f = BitmapDescriptorFactory.HUE_VIOLET;
-                                break;
-                            case "Transporte":
-                                f = BitmapDescriptorFactory.HUE_YELLOW;
-                                break;
-                        }
-
-                        if (monument && l.getCategory().equals("Monumento")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (museus && l.getCategory().equals("Museu")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (arteUrbana && l.getCategory().equals("Arte Urbana")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (zonaLazer && l.getCategory().equals("Zona Lazer")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (zonaComercial && l.getCategory().equals("Zona Comercial")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (zonaDesportiva && l.getCategory().equals("Zona Desportiva")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (zonaEstudantil && l.getCategory().equals("Zona Estudantil")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-
-                        if (transportes && l.getCategory().equals("Transporte")) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLon())).title(l.getName()).icon(BitmapDescriptorFactory.defaultMarker(f)));
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(MapActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
     }
 
     public void search(View v) {
