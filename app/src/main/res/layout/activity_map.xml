@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         app:adSize="BANNER"
         app:adUnitId="@string/banner_ad_unit_id"
-        app:layout_constraintBottom_toTopOf="@id/map"
+        app:layout_constraintBottom_toTopOf="@id/map_ll"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
