@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,7 +36,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private int TAG_CODE_PERMISSION_LOCATION = 0;
     private GoogleMap mMap;
     private AdView mAdView;
-    private TextView searchBar;
     private String lastMarkerId = "";
 
     private static String locationsCollection = "locations";
@@ -159,11 +157,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     protected void onActivityResult(int requestCode, int resultCode, @Nullable final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILTER_REQ_CODE && resultCode == RESULT_OK) {
-            mMap.clear(); // TODO: figure out why clear() doesnt work
             DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
             databaseRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    mMap.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         LocationCollection l = ds.getValue(LocationCollection.class);
                         float f = 0.0f;
@@ -242,8 +240,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Toast.makeText(MapActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-            //TODO: implement filter logic
-
         }
     }
 
