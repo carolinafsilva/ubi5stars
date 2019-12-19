@@ -58,14 +58,16 @@ public class UserProfileActivity extends AppCompatActivity {
             TVuser = findViewById(R.id.up_username);
             TVemail = findViewById(R.id.up_emailaddr);
 
+            TVuser.setText(user.getDisplayName());
             TVemail.setText(user.getEmail());
 
-            Picasso.with(UserProfileActivity.this)
-                    .load(user.getPhotoUrl())
-                    .fit()
-                    .centerCrop()
-                    .into(mImageView);
-            TVuser.setText(user.getDisplayName());
+            if (user.getPhotoUrl() != null) {
+                Picasso.with(UserProfileActivity.this)
+                        .load(user.getPhotoUrl())
+                        .fit()
+                        .centerCrop()
+                        .into(mImageView);
+            }
         }
 
         storageRef = FirebaseStorage.getInstance().getReference("profile_pictures");
@@ -75,8 +77,6 @@ public class UserProfileActivity extends AppCompatActivity {
     public void editUserData(View view) {
 
         if (user != null) {
-
-
             etUser = findViewById(R.id.up_ins_email);
             etPass = findViewById(R.id.up_ins_password);
             etConf_pass = findViewById(R.id.up_password_confirmation);

@@ -49,11 +49,13 @@ public class MenuActivity extends Activity {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Picasso.with(MenuActivity.this)
-                            .load(user.getPhotoUrl())
-                            .fit()
-                            .centerCrop()
-                            .into(imageView);
+                    if (user.getPhotoUrl() != null) {
+                        Picasso.with(MenuActivity.this)
+                                .load(user.getPhotoUrl())
+                                .fit()
+                                .centerCrop()
+                                .into(imageView);
+                    }
                     tvName.setText(user.getDisplayName());
                 }
             });
