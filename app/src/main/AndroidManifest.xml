@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".RankingActivity"></activity>
         <activity android:name=".FilterActivity" />
-        <activity android:name=".userProfile" />
+        <activity android:name=".UserProfile" />
         <activity
             android:name=".SettingsActivity"
             android:configChanges="locale|orientation" />
