@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -29,10 +31,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private final int FILTER_REQ_CODE = 1;
+
     private int TAG_CODE_PERMISSION_LOCATION = 0;
     private GoogleMap mMap;
     private AdView mAdView;
+    private TextView searchBar;
     private String lastMarkerId = "";
+    private static final String[] categories = {"Monumento", "Museu", "Arte Urbana", "Zona Lazer", "Zona Comercial", "Zona Desportiva", "Zona Estudantil", "Transporte"};
 
     private static String locationsCollection = "locations";
 
@@ -47,6 +53,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
     @Override
@@ -144,10 +152,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void filter(View v) {
-        // TODO: implement
+        Intent i = new Intent(this, FilterActivity.class);
+
+        startActivityForResult(i, FILTER_REQ_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FILTER_REQ_CODE && resultCode == RESULT_OK) {
+            //TODO: implement filter logic
+        }
     }
 
     public void search(View v) {
-        // TODO: implement
+
     }
 }
