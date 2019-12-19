@@ -1,6 +1,7 @@
 package pmd.di.ubi.ubi5stars;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,15 +36,14 @@ public class SearchActivity extends Activity {
 
     public void search(View v) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(locationsCollection);
-
-        final String name = tvSearchBar.getText().toString();
-
-        databaseRef.orderByChild("name").addValueEventListener(new ValueEventListener() {
+        searchResult.removeAllViews();
+        final String name = tvSearchBar.getText().toString().toLowerCase();
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     LocationCollection l = ds.getValue(LocationCollection.class);
-                    if (l.getName().contains(name)) {
+                    if (l.getName().toLowerCase().contains(name)) {
                         LinearLayout ll = (LinearLayout) getLayoutInflater().inflate(R.layout.search_result, null);
 
                         TextView tvLocation = ll.findViewById(R.id.location);
@@ -67,5 +67,12 @@ public class SearchActivity extends Activity {
                 Toast.makeText(SearchActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void openMap(View v) {
+        Intent i = new Intent(this, AboutMarkerActivity.class);
+        TextView location = searchResult.findViewById(R.id.location);
+        i.putExtra("locationName", location.getText().toString());
+        startActivity(i);
     }
 }

@@ -254,6 +254,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void search(View v) {
-        // TODO: implement
+        Intent i = new Intent(this, SearchActivity.class);
+        startActivity(i);
     }
 }
